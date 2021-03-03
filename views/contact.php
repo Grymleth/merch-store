@@ -63,12 +63,12 @@ if (filter_has_var(INPUT_POST, 'submit')) {
     <title>Contact Us</title>
 
     <!-- Header -->
-    <?php include "./templates/header.php" ?>
+    <?php require APPROOT . "/views/partials/header.php"; ?>
 </head>
 
 <body>
     <!-- Navigation -->
-    <?php include "./templates/navbar.php" ?>
+    <?php require APPROOT . "/views/partials/navbar.php"; ?>
 
     <!-- Content -->
     <div class="container my-4">
@@ -98,7 +98,7 @@ if (filter_has_var(INPUT_POST, 'submit')) {
     </div>
 
     <!-- Footer -->
-    <?php include "./templates/footer.php" ?>
+    <?php require APPROOT . "/views/partials/footer.php"; ?>
 </body>
 
 </html>
