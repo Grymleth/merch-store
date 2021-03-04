@@ -10,14 +10,14 @@
 
   <title>Shop Item</title>
 
-  <?php require APPROOT . "/views/partials/header.php"; ?>
+  <?php require "src/common/header.php"; ?>
 
 </head>
 
 <body>
 
   <!-- Navigation -->
-  <?php require APPROOT . "/views/partials/navbar.php"; ?>
+  <?php require "src/common/navbar.php"; ?>
 
   <!-- Page Content -->
   <div class="container">
@@ -84,7 +84,7 @@
   <!-- /.container -->
 
   <!-- Footer -->
-  <?php require APPROOT . "/views/partials/footer.php"; ?>
+  <?php require "src/common/footer.php"; ?>
 
 </body>
 

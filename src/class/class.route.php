@@ -1,5 +1,8 @@
 <?php 
 
+include "stdafx.php";
+
+
 class Route{
 
     private $_uri = array();

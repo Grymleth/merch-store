@@ -2,7 +2,7 @@
 
 class Contact{
     public function __construct(){
-        require_once APPROOT . "/views/contact.php";
+        require_once "src/pages/contact.php";
     }
 
     

@@ -1,17 +1,13 @@
 <?php 
 
-include 'config.php';
-
-include 'class.route.php';
-include 'src/class.home.php';
-include 'src/class.shopitem.php';
-include 'src/class.contact.php';
-include 'src/class.404.php';
+include_once "src/core/config.php";
+include_once "src/class/class.route.php";
 
 $route = new Route();
 
 $route->add('/', 'Home');
-$route->add('/shop_item', 'ShopItem');
+$route->add('/home', 'Home');
+$route->add('/products', 'ShopItem');
 $route->add('/contact', 'Contact');
 
 $route->submit();

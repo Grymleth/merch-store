@@ -2,7 +2,7 @@
 
 class Home{
     public function __construct(){
-        require_once APPROOT . "/views/home.php";
+        require_once "src/pages/home.php";
     }
 }
 
