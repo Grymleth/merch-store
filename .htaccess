@@ -3,4 +3,6 @@ RewriteBase /merch-store/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
-RewriteRule ^(.+)$ index.php?uri=$1 [QSA,L]
+RewriteRule ^([a-zA-Z0-9]+)/([a-zA-Z0-9]+)/([a-zA-Z0-9\/]+)/?$ index.php?page=$1&subpage=$2&request=$3 [QSA]
+RewriteRule ^([a-zA-Z0-9]+)/([a-zA-Z0-9]+)/?$ index.php?page=$1&subpage=$2 [QSA]
+RewriteRule ^([a-zA-Z0-9]+)/?$ index.php?page=$1 [QSA]

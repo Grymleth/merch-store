@@ -2,7 +2,7 @@
 
 class Error404{
     public function __construct(){
-        echo 'does not exists';
+        require_once "src/pages/404.php";
     }
 }
 

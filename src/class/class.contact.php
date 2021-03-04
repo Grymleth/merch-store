@@ -1,8 +1,13 @@
 <?php 
 
 class Contact{
-    public function __construct(){
-        require_once "src/pages/contact.php";
+    public function __construct($param = null){
+        if($param == null){
+            require_once "src/pages/contact.php";
+        }
+        else{
+            new Error404();
+        }
     }
 
     

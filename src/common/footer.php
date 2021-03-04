@@ -1,7 +1,7 @@
 <!-- Footer -->
 <footer class="py-5 bg-dark">
     <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Store 2021</p>
+      <p class="m-0 text-center text-white">Copyright &copy; <?= SITENAME ?> 2021</p>
     </div>
     <!-- /.container -->
 </footer>
