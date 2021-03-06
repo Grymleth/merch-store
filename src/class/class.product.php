@@ -1,6 +1,6 @@
 <?php 
 
-class ShopItem{
+class Product{
     public function __construct($param = null){
         if($param != null){
             $conn = new Database('localhost', 'root', '', 'inventory');
@@ -18,7 +18,7 @@ class ShopItem{
             $result = $conn->query_fetch("SELECT * FROM goodscategoryinfo", array());
 
             $categories = $result;
-            require_once "src/pages/item.php";
+            require_once "src/pages/product.php";
 
             // Get categories from db
         }
