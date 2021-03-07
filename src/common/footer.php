@@ -1,9 +1,11 @@
 <!-- Footer -->
-<footer class="sticky-footer bg-white">
-    <div class="container my-auto">
-        <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020</span>
-        </div>
+<footer class="footer py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; <?= SITENAME ?> 2021</p>
     </div>
+    <!-- /.container -->
 </footer>
-<!-- End of Footer -->
+
+  <!-- Bootstrap core JavaScript -->
+<script src="./js/jquery.js"></script>
+<script src="./js/bootstrap.bundle.js"></script>
