@@ -25,17 +25,7 @@
 
         <div class="row">
 
-            <div class="col-lg-3">
-
-                <h1 class="my-4"><i class="far fa-laugh-wink"></i></h1>
-                <div class="list-group">
-                    <?php foreach($categories as $category){ ?>
-                    <a href="/merch-store/category/<?= strtolower($category['GoodsCatName']) ?>" class="list-group-item"><?= $category['GoodsCatName'] ?></a>
-                    <?php } ?>
-                </div>
-
-            </div>
-            <!-- /.col-lg-3 -->
+            <?php require "src/common/sidebar.php" ?>
 
             <div class="col-lg-9">
 
@@ -52,7 +42,7 @@
                             $n = count($products) < 3 ? count($products) : 3;
                             for($i = 0; $i < $n; $i++){ ?>
                         <div class="carousel-item <?= $i == 0 ? 'active' : '' ?>">
-                            <img class="d-block img-fluid" src="<?= $products[$i]['GoodsImage'] ?>" alt="<?= $products[$i]['GoodsName'] ?>" style="width:900px;height:350px;">
+                            <img class="d-block img-fluid" src="<?= $products[$i]['goodsimage'] ?>" alt="<?= $products[$i]['goodsname'] ?>" style="width:900px;height:350px;">
                         </div>
                         <?php } ?>
                         
@@ -73,19 +63,17 @@
 
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="card h-100">
-                            <a href="#"><img class="card-img-top" src="<?= $product['GoodsImage'] ?>" alt=""></a>
+                            <a href="#"><img class="card-img-top" src="<?= $product['goodsimage'] ?>" alt=""></a>
                             <div class="card-body">
                                 <h4 class="card-title">
-                                    <a href="/merch-store/products/<?= $product['GoodsID'] ?>"><?= $product['GoodsName'] ?></a>
+                                    <a href="/merch-store/products/<?= $product['goodsid'] ?>"><?= $product['goodsname'] ?></a>
                                 </h4>
-                                <h5>₱<?= sprintf('%.2f', $product['GoodsPrice']) ?></h5>
+                                <h5>₱<?= sprintf('%.2f', $product['goodsprice']) ?></h5>
                                 <p class="card-text"><?= $product['GoodsDescription'] ?></p>
                             </div>
-
-                            <!-- Reviews -->
-                            <!-- <div class="card-footer">
+                            <div class="card-footer">
                                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                            </div> -->
+                            </div>
                         </div>
                     </div>
 

@@ -6,11 +6,11 @@ class Home{
 
             $conn = new Database(DB_HOST, DB_INVENTORY_USER, DB_INVENTORY_PASS, DB_INVENTORY_NAME);
 
-            $result = $conn->query_fetch("SELECT * FROM goodslistinfo", array());
+            $result = $conn->query_fetch("SELECT goodsid, goodsname, goodsimage, goodsdescription, goodsprice FROM goodslistinfo", array());
 
             $products = $result;
 
-            $result = $conn->query_fetch("SELECT * FROM goodscategoryinfo", array());
+            $result = $conn->query_fetch("SELECT goodscategory, goodscatname FROM goodscategoryinfo", array());
 
             $categories = $result;
 

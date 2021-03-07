@@ -25,17 +25,7 @@
 
         <div class="row">
 
-            <div class="col-lg-3">
-
-                <h1 class="my-4"><?= SITENAME ?></h1>
-                <div class="list-group">
-                    <?php foreach($categories as $category){ ?>
-                    <a href="/merch-store/category/<?= strtolower($category['goodscatname']) ?>" class="list-group-item <?= strtolower($category['goodscatname']) == $param ? 'active' : '' ?>"><?= $category['goodscatname'] ?></a>
-                    <?php } ?>
-                </div>
-
-            </div>
-            <!-- /.col-lg-3 -->
+            <?php include "src/common/sidebar.php" ?>
 
             <div class="col-lg-9">
 

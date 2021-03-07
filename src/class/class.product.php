@@ -15,7 +15,7 @@ class Product{
             }
             $product = $result[0];
             
-            $result = $conn->query_fetch("SELECT * FROM goodscategoryinfo", array());
+            $result = $conn->query_fetch("SELECT goodscategory, goodscatname FROM goodscategoryinfo", array());
 
             $categories = $result;
             require_once "src/pages/product.php";

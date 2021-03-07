@@ -24,14 +24,8 @@
 
         <div class="row">
 
-            <div class="col-lg-3">
-                <h1 class="my-4"><?= SITENAME ?></h1>
-                <div class="list-group">
-                    <?php foreach($categories as $category){ ?>
-                        <a href="/merch-store/category/<?= strtolower($category['GoodsCatName']) ?>" class="list-group-item <?= $product['GoodsCategory'] == $category['GoodsCategory'] ? 'active' : '' ?>"><?= $category['GoodsCatName'] ?></a>
-                    <?php } ?>
-                </div>
-            </div>
+            <!-- Sidebar - Category menu -->
+            <?php include "src/common/sidebar.php" ?>
             <!-- /.col-lg-3 -->
 
             <div class="col-lg-9">
