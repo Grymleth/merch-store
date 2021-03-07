@@ -3,7 +3,7 @@
 <link href="<?= __BASE_URL__ ?>css/bootstrap.css" rel="stylesheet">
 
 <!-- Font Awesome CSS -->
-<!-- <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> -->
+<link href="<?= __BASE_URL__ ?>css/fontawesome.css" rel="stylesheet" type="text/css">
 
 <!-- Custom styles for this template -->
 <!-- <link href="../css/index.css" rel="stylesheet"> -->

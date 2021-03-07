@@ -59,9 +59,11 @@
                                 <h5>₱<?= sprintf('%.2f', $product['goodsprice']) ?></h5>
                                 <p class="card-text"><?= $product['goodsdescription'] ?></p>
                             </div>
-                            <div class="card-footer">
+
+                            <!-- Reviews -->
+                            <!-- <div class="card-footer">
                                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
 

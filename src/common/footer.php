@@ -9,3 +9,6 @@
   <!-- Bootstrap core JavaScript -->
 <script src="./js/jquery.js"></script>
 <script src="./js/bootstrap.bundle.js"></script>
+
+<!-- Font Awesome JS -->
+<!-- <script src="https://kit.fontawesome.com/9581e78dd3.js" crossorigin="anonymous"></script> -->

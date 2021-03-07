@@ -27,7 +27,7 @@
 
             <div class="col-lg-3">
 
-                <h1 class="my-4"><?= SITENAME ?></h1>
+                <h1 class="my-4"><i class="far fa-laugh-wink"></i></h1>
                 <div class="list-group">
                     <?php foreach($categories as $category){ ?>
                     <a href="/merch-store/category/<?= strtolower($category['GoodsCatName']) ?>" class="list-group-item"><?= $category['GoodsCatName'] ?></a>
@@ -81,9 +81,11 @@
                                 <h5>₱<?= sprintf('%.2f', $product['GoodsPrice']) ?></h5>
                                 <p class="card-text"><?= $product['GoodsDescription'] ?></p>
                             </div>
-                            <div class="card-footer">
+
+                            <!-- Reviews -->
+                            <!-- <div class="card-footer">
                                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
 

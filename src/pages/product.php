@@ -28,7 +28,7 @@
                 <h1 class="my-4"><?= SITENAME ?></h1>
                 <div class="list-group">
                     <?php foreach($categories as $category){ ?>
-                        <a href="#" class="list-group-item <?= $product['GoodsCategory'] == $category['GoodsCategory'] ? 'active' : '' ?>"><?= $category['GoodsCatName'] ?></a>
+                        <a href="/merch-store/category/<?= strtolower($category['GoodsCatName']) ?>" class="list-group-item <?= $product['GoodsCategory'] == $category['GoodsCategory'] ? 'active' : '' ?>"><?= $category['GoodsCatName'] ?></a>
                     <?php } ?>
                 </div>
             </div>
