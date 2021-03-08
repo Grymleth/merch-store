@@ -69,7 +69,7 @@
                                     <a href="/merch-store/products/<?= $product['goodsid'] ?>"><?= $product['goodsname'] ?></a>
                                 </h4>
                                 <h5>₱<?= sprintf('%.2f', $product['goodsprice']) ?></h5>
-                                <p class="card-text"><?= $product['GoodsDescription'] ?></p>
+                                <p class="card-text"><?= $product['goodsdescription'] ?></p>
                             </div>
                             <div class="card-footer">
                                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
@@ -92,6 +92,7 @@
     <!-- /.container -->
 
     <?php require "src/common/footer.php"; ?>
+    <?php require "src/common/scripts.php"; ?>
 </body>
 
 </html>

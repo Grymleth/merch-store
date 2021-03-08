@@ -23,6 +23,5 @@ define('DB_INVENTORY_PASS', '');
 
 define('DB_INVENTORY_NAME', 'inventory');
 
-
 ?>
 

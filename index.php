@@ -10,6 +10,7 @@ $route->add('/home', 'Home');
 $route->add('/products', 'Product');
 $route->add('/category', 'Category');
 $route->add('/contact', 'Contact');
+$route->add('/accounts', 'Accounts');
 
 $route->submit();
 

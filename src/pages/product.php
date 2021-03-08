@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title><?= $product['GoodsName'] ?></title>
+    <title><?= $product['goodsname'] ?></title>
 
     <?php require "src/common/header.php"; ?>
 
@@ -25,17 +25,17 @@
         <div class="row">
 
             <!-- Sidebar - Category menu -->
-            <?php include "src/common/sidebar.php" ?>
+            <?php include "src/common/sidebar.php"; ?>
             <!-- /.col-lg-3 -->
 
             <div class="col-lg-9">
 
                 <div class="card mt-4">
-                    <img class="card-img-top img-fluid" src="<?= $product['GoodsImage'] ?>" alt="">
+                    <img class="card-img-top img-fluid" src="<?= $product['goodsimage'] ?>" alt="">
                     <div class="card-body">
-                        <h3 class="card-title"><?= $product['GoodsName'] ?></h3>
-                        <h4>₱<?= sprintf('%.2f', $product['GoodsPrice']) ?></h4>
-                        <p class="card-text"><?= $product['GoodsDescription'] ?></p>
+                        <h3 class="card-title"><?= $product['goodsname'] ?></h3>
+                        <h4>₱<?= sprintf('%.2f', $product['goodsprice']) ?></h4>
+                        <p class="card-text"><?= $product['goodsdescription'] ?></p>
                         <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
                         4.0 stars
                     </div>
@@ -77,6 +77,7 @@
 
     <!-- Footer -->
     <?php require "src/common/footer.php"; ?>
+    <?php require "src/common/scripts.php"; ?>
 
 </body>
 

@@ -29,6 +29,8 @@ class Category{
             $result = $conn->query_fetch("SELECT goodscatname FROM goodscategoryinfo", array());
             $categories = $result;
 
+            $activeCategory = strtoupper($param);
+
             require_once "src/pages/category.php";
 
             // Get categories from db

@@ -99,6 +99,7 @@ if (filter_has_var(INPUT_POST, 'submit')) {
 
     <!-- Footer -->
     <?php require "src/common/footer.php"; ?>
+    <?php require "src/common/scripts.php"; ?>
 </body>
 
 </html>

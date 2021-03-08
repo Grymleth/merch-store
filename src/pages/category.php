@@ -41,7 +41,7 @@
 
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="card h-100">
-                            <a href="#"><img class="card-img-top" src="<?= $product['goodsimage'] ?>" alt=""></a>
+                            <a href="/merch-store/products/<?= $product['goodsid'] ?>"><img class="card-img-top" src="<?= $product['goodsimage'] ?>" alt=""></a>
                             <div class="card-body">
                                 <h4 class="card-title">
                                     <a href="/merch-store/products/<?= $product['goodsid'] ?>"><?= $product['goodsname'] ?></a>
@@ -72,6 +72,7 @@
     <!-- /.container -->
 
     <?php require "src/common/footer.php"; ?>
+    <?php require "src/common/scripts.php"; ?>
 </body>
 
 </html>
