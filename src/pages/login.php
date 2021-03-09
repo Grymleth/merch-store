@@ -1,12 +1,3 @@
-<?php 
-
-if(isset($_POST['submit'])){
-    echo $_POST['email'] . '<br>';
-    echo $_POST['password'];
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,15 +47,15 @@ if(isset($_POST['submit'])){
                                         </div>
                                         <div class="form-group">
                                         </div>
+                                        <?= isset($data) ? "<label>" . $data['error'] ."</label>" : '' ?>
                                         <button type="submit" value="submit" name="submit" class= "btn btn-primary btn-user btn-block">
                                             Login
                                         </button>
-                                        <hr>
                                     </form>
                                     <hr>
-                                    <div class="text-center">
+                                    <!-- <div class="text-center">
                                         <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                    </div>
+                                    </div> -->
                                     <div class="text-center">
                                         <a class="small" href="/merch-store/accounts/register">Create an Account!</a>
                                     </div>

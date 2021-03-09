@@ -23,5 +23,12 @@ define('DB_INVENTORY_PASS', '');
 
 define('DB_INVENTORY_NAME', 'inventory');
 
+// Account
+define('DB_ACCOUNT_USER', 'root');
+
+define('DB_ACCOUNT_PASS', '');
+
+define('DB_ACCOUNT_NAME', 'account');
+
 ?>
 

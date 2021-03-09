@@ -37,30 +37,47 @@
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="firstName"
                                             name="firstName" placeholder="First Name">
+                                        <?= isset($data) ? "<label>" . $data['firstNameError'] ."</label>" : '' ?>
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user" id="lastName"
                                             name="lastName" placeholder="Last Name">
+                                        <?= isset($data) ? "<label>" . $data['lastNameError'] ."</label>" : '' ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user" id="email"
-                                        name="password" placeholder="Email Address">
+                                        name="email" placeholder="Email Address">
+                                    <?= isset($data) ? "<label>" . $data['emailError'] ."</label>" : '' ?>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="password" class="form-control form-control-user"
                                             id="password" name="password" placeholder="Password">
+                                        <?= isset($data) ? "<label>" . $data['passwordError'] ."</label>" : '' ?>
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="password" class="form-control form-control-user"
                                             id="repeatPassword" name="repeatPassword" placeholder="Repeat Password">
+                                        <?= isset($data) ? "<label>" . $data['repeatPasswordError'] ."</label>" : '' ?>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user"
+                                            id="address" name="address" placeholder="Address">
+                                        <?= isset($data) ? "<label>" . $data['addressError'] ."</label>" : '' ?>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-user"
+                                            id="contactno" name="contactno" placeholder="Contact Number">
+                                        <?= isset($data) ? "<label>" . $data['contactError'] ."</label>" : '' ?>
                                     </div>
                                 </div>
                                 <button type="submit" value="submit" name="submit" class= "btn btn-primary btn-user btn-block">
                                     Register Account
                                 </button>
-                                <hr>
                             </form>
                             <hr>
                             <div class="text-center">

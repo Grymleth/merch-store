@@ -32,8 +32,22 @@ class Database{
     }
 
     // write queries
-    public function query($sql){
-        $this->statement = $this->dbHandler->prepare($sql);
+    public function query($sql, $array='') {
+        if(!is_array($array)) $array = array($array);
+        $query = $this->dbHandler->prepare($sql);
+        if (!$query) {
+            $this->error = $this->throw_sql_exception();
+            $query->closeCursor();
+            return false;
+        } else {
+            if($query->execute($array)) {
+                $query->closeCursor();
+                return true;
+            } else {
+                $this->error = $this->throw_sql_exception($query);
+                return false;
+            }
+        }
     }
 
 /*
