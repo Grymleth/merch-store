@@ -61,6 +61,12 @@
 
                 </div>
                 <!-- /.row -->
+                <!-- Pagination with Jquery-->
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        
+                    </ul>
+                </nav>
 
             </div>
             <!-- /.col-lg-9 -->
@@ -74,7 +80,6 @@
     <?php require "src/common/footer.php"; ?>
     <?php require "src/common/scripts.php"; ?>
 
-    <!-- <script>categoryPage();</script> -->
 </body>
 
 </html>
