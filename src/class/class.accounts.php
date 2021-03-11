@@ -8,6 +8,9 @@ class Accounts{
             case 'login':
                 $this->login();
                 break;
+            case 'logout':
+                $this->logout();
+                break;
             case 'register':
                 $this->register();
                 break;
@@ -27,16 +30,16 @@ class Accounts{
             // hash password
             $data['password'] = hash('SHA512', $data['email'] . $data['password']);
 
-            if($this->db->query_fetch_single('SELECT email, pass FROM users WHERE email = ? AND pass = ?', array($data['email'], $data['password']))){
+            $result = $this->db->query_fetch_single('SELECT email, pass, name FROM users WHERE email = ? AND pass = ?', array($data['email'], $data['password']));
+            if($result){
                 // redirect to home page
+                $_SESSION['login'] = true;
+                $_SESSION['name'] = $result['name'];
                 header('location: '. __BASE_URL__ . 'home');
             }
             else{
                 $data['error'] = 'Invalid email or password.';
-            }
-
-            if(empty($data['error'])){
-                header('location: '. __BASE_URL__ . 'home/success');
+                
             }
         }
         
@@ -44,44 +47,44 @@ class Accounts{
         
     }
 
+    public function logout(){
+        session_unset();
+        header('location: '. __BASE_URL__);
+    }
+
     public function register(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $data = [
-                'name' => trim($_POST['firstName']) . ' ' . trim($_POST['lastName']),
                 'email' => trim($_POST['email']),
+                'name' => trim($_POST['firstName']) . ' ' . trim($_POST['lastName']),
                 'password' => trim($_POST['password']),
                 'address' => trim($_POST['address']),
                 'contactno' => trim($_POST['contactno']),
                 'repeatPassword' => trim($_POST['repeatPassword']),
-                'firstNameError' => '',
-                'lastNameError' => '',
-                'emailError' => '',
-                'passwordError' => '',
-                'repeatPasswordError' => '',
-                'addressError' => '',
-                'contactError' => ''
             ];
 
+            $error = [];
+
             // validate name
-            if(empty($data['firstName'])){
-                $data['firstNameError'] = 'Please enter first name.';
+            if(empty($_POST['firstName'])){
+                array_push($error, 'Please enter first name.');
             }
 
-            if(empty($data['lastName'])){
-                $data['lastNameError'] = 'Please enter last name.';
+            if(empty($_POST['lastName'])){
+                array_push($error, 'Please enter last name.');
             }
 
             // Validate username on letters/numbers
             if(empty($data['email'])){
-                $data['emailError'] = 'Please enter email address.';
+                array_push($error, 'Please enter email address.');
             }
             else if(!filter_var($data['email'], FILTER_VALIDATE_EMAIL)){
-                $data['emailrError'] = 'Please enter a valid email.';
+                array_push($error, 'Please enter a valid email.');
             }
             else{
                 // check if email exists
                 if($this->findUserByEmail($data['email'])){
-                    $data['emailError'] = 'Email is already taken.';
+                    array_push($error, 'Email is already taken.');
                 }
             }
 
@@ -90,13 +93,13 @@ class Accounts{
 
             // validate password on length and numeric values
             if(empty($data['password'])){
-                $data['passwordError'] = 'Please enter password.';
+                array_push($error, 'Please enter password.');
             }
-            else if(strlen($data['password'] < 6)){
-                $data['passwordError'] = 'Password must be at least 8 characters.';
+            else if(strlen($data['password'] <= 6)){
+                array_push($error, 'Password must be at least 6 characters.');
             }
             else if(!preg_match($passwordValidation, $data['password'])){
-                $data['passwordError'] = 'Password must have at least 1 numeric value.';
+                array_push($error, 'Password must have at least 1 numeric value.');
             }
 
             // Validate repeat password
@@ -105,36 +108,28 @@ class Accounts{
             }
             else {
                 if($data['password'] != $data['repeatPassword']){
-                    $data['repeatPasswordError'] = 'Passwords do not match, please try again';
+                    array_push($error, 'Passwords do not match, please try again');
                 }
             }
 
             if(empty($data['address'])){
-                $data['addressError'] = 'Please enter address.';
+                array_push($error, 'Please enter address.');
             }
 
             // Validate contact number
             if(empty($data['contactno'])){
-                $data['contactError'] = 'Please enter contact number';
+                array_push($error, 'Please enter contact number');
             }
             else if(!preg_match($contactValidation, $data['contactno'])){
-                $data['contactError'] = 'Please enter valid contact number';
+                array_push($error, 'Please enter valid contact number');
             }
 
             // make sure that errors are empty
-            if(empty($data['emailError']) && empty($data['passwordError']) && 
-            empty($data['repeatPasswordError']) && empty($data['contactError'])){
+            if(count($error) == 0){
 
                 // Hash password
                 $data['password'] = hash('SHA512', $data['email'] . $data['password']);
-                
-                if($this->registerUser($data)){
-                    // redirect to login page
-                    header('location: '. __BASE_URL__ . 'accounts/login');
-                }
-                else{
-                    die('Something went wrong');
-                }
+                $this->registerUser($data);
             }
         }
 

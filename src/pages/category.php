@@ -32,14 +32,14 @@
                 <div class="row my-4">
                     <?php if($products == []){ ?>
 
-                    <div class="container my-4">
+                    <div class="container my-4" id="loop">
                         <h3>No products available</h3>
                     </div>
                     <?php } ?>
                     
                     <?php foreach($products as $product){ ?>
 
-                    <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="product col-lg-4 col-md-6 mb-4">
                         <div class="card h-100">
                             <a href="/merch-store/products/<?= $product['goodsid'] ?>"><img class="card-img-top" src="<?= $product['goodsimage'] ?>" alt=""></a>
                             <div class="card-body">
@@ -73,6 +73,8 @@
 
     <?php require "src/common/footer.php"; ?>
     <?php require "src/common/scripts.php"; ?>
+
+    <!-- <script>categoryPage();</script> -->
 </body>
 
 </html>

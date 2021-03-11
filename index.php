@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 include_once "src/core/config.php";
 include_once "src/class/class.route.php";
 

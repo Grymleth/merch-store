@@ -47,7 +47,7 @@
                                         </div>
                                         <div class="form-group">
                                         </div>
-                                        <?= isset($data) ? "<label>" . $data['error'] ."</label>" : '' ?>
+                                        <?= isset($data) ? "<div class=\"alert alert-danger\">" . $data['error'] ."</div>" : '' ?>
                                         <button type="submit" value="submit" name="submit" class= "btn btn-primary btn-user btn-block">
                                             Login
                                         </button>
@@ -57,7 +57,7 @@
                                         <a class="small" href="forgot-password.html">Forgot Password?</a>
                                     </div> -->
                                     <div class="text-center">
-                                        <a class="small" href="/merch-store/accounts/register">Create an Account!</a>
+                                        <a class="small" href="<?= __BASE_URL__ ?>accounts/register">Create an Account!</a>
                                     </div>
                                 </div>
                             </div>

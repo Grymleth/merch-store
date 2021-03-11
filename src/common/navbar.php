@@ -29,21 +29,21 @@
 
         <!-- Nav Item - About -->
         <li class="nav-item dropdown no-arrow mx-1">
-            <a class="nav-link dropdown-toggle" href="/merch-store/about">
+            <a class="nav-link dropdown-toggle" href="<?= __BASE_URL__ ?>about">
                 <span>About</span>
             </a>
         </li>
 
         <!-- Nav Item - Services -->
         <li class="nav-item dropdown no-arrow mx-1">
-            <a class="nav-link dropdown-toggle" href="/merch-store/services">
+            <a class="nav-link dropdown-toggle" href="<?= __BASE_URL__ ?>services">
                 <span>Services</span>
             </a>
         </li>
 
         <!-- Nav Item - Contact -->
         <li class="nav-item dropdown no-arrow mx-1">
-            <a class="nav-link dropdown-toggle" href="/merch-store/contact">
+            <a class="nav-link dropdown-toggle" href="<?= __BASE_URL__ ?>contact">
                 <span>Contact</span>
             </a>
         </li>
@@ -51,21 +51,20 @@
         <div class="topbar-divider d-none d-sm-block"></div>
 
         <!-- Nav Item - Login -->
-        <li class="nav-item dropdown no-arrow mx-1">
-            <a class="nav-link dropdown-toggle" href="/merch-store/accounts/login">
-                <span>Login</span>
-            </a>
-        </li>
+        <?php 
+        
+        if(isset($_SESSION['login'])){ 
+            if($_SESSION['login']){
+        ?>
 
         <!-- Nav Item - User Information -->
-        <!-- <li class="nav-item dropdown no-arrow">
+        <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline small">Douglas McGee</span>
-                <img class="">
-            </a> -->
+                <span class="mr-2 d-none d-lg-inline small"><?= $_SESSION['name'] ?></span>
+            </a>
             <!-- Dropdown - User Information -->
-            <!-- <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                 aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -85,9 +84,38 @@
                     Logout
                 </a>
             </div>
-        </li> -->
+        </li>
+
+        <?php }} else{ ?>
+            <li class="nav-item dropdown no-arrow mx-1">
+                <a class="nav-link dropdown-toggle" href="<?= __BASE_URL__ ?>accounts/login">
+                    <span>Login</span>
+                </a>
+            </li>
+        <?php } ?>
 
     </ul>
+
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="<?= __BASE_URL__ ?>accounts/logout/">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </nav>
 <!-- End of Topbar -->

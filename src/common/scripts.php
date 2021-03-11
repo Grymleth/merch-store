@@ -1,3 +1,6 @@
 <!-- Bootstrap core JavaScript -->
-<script src="./js/jquery.js"></script>
-<script src="./js/bootstrap.bundle.js"></script>
+
+<script src="<?= __BASE_URL__ ?>js/jquery.js"></script>
+<script src="<?= __BASE_URL__ ?>js/bootstrap.bundle.js"></script>
+<!-- Custom JS -->
+<script src="<?= __BASE_URL__ ?>js/index.js"></script>

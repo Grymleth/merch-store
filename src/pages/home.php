@@ -61,7 +61,7 @@
 
                     <?php foreach($products as $product){ ?>
 
-                    <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="product col-lg-4 col-md-6 mb-4">
                         <div class="card h-100">
                             <a href="#"><img class="card-img-top" src="<?= $product['goodsimage'] ?>" alt=""></a>
                             <div class="card-body">
@@ -79,6 +79,16 @@
 
                     <?php } ?>
 
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        </ul>
+                    </nav>
+
                 </div>
                 <!-- /.row -->
 
@@ -93,6 +103,8 @@
 
     <?php require "src/common/footer.php"; ?>
     <?php require "src/common/scripts.php"; ?>
+
+    <!-- <script>homePagination();</script> -->
 </body>
 
 </html>

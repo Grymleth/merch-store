@@ -31,35 +31,43 @@
                         <div class="p-5">
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                                <?php 
+                                if(isset($error)){
+                                    if(count($error) > 0){
+                                        echo "<div class=\"alert alert-danger\">". $error[0]. " </div>";
+                                    }
+                                    else{
+                                        echo "<div class=\"alert alert-success\">You have successfully registered!. Click <a href=\"" . __BASE_URL__ . "accounts/login\">here</a> to login.</div>";
+                                    }
+                                }
+                                
+                                ?>
+
+                                
                             </div>
                             <form action="<?= __BASE_URL__ ?>accounts/register" method="POST" class="user">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="firstName"
                                             name="firstName" placeholder="First Name">
-                                        <?= isset($data) ? "<label>" . $data['firstNameError'] ."</label>" : '' ?>
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user" id="lastName"
                                             name="lastName" placeholder="Last Name">
-                                        <?= isset($data) ? "<label>" . $data['lastNameError'] ."</label>" : '' ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user" id="email"
                                         name="email" placeholder="Email Address">
-                                    <?= isset($data) ? "<label>" . $data['emailError'] ."</label>" : '' ?>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="password" class="form-control form-control-user"
                                             id="password" name="password" placeholder="Password">
-                                        <?= isset($data) ? "<label>" . $data['passwordError'] ."</label>" : '' ?>
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="password" class="form-control form-control-user"
                                             id="repeatPassword" name="repeatPassword" placeholder="Repeat Password">
-                                        <?= isset($data) ? "<label>" . $data['repeatPasswordError'] ."</label>" : '' ?>
                                     </div>
                                 </div>
                                 <hr>
@@ -67,12 +75,10 @@
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user"
                                             id="address" name="address" placeholder="Address">
-                                        <?= isset($data) ? "<label>" . $data['addressError'] ."</label>" : '' ?>
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user"
                                             id="contactno" name="contactno" placeholder="Contact Number">
-                                        <?= isset($data) ? "<label>" . $data['contactError'] ."</label>" : '' ?>
                                     </div>
                                 </div>
                                 <button type="submit" value="submit" name="submit" class= "btn btn-primary btn-user btn-block">
