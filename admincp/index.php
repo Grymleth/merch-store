@@ -1,17 +1,5 @@
 <?php
 
-function jsalert($message) { 
-    echo "<script>alert('$message');</script>"; 
-} 
-
-/*
-    -1 = BANNED
-    0 = NORMAL
-    1 = INVENTORY
-    2 = FINANCIAL
-    3 = ADMIN 
-*/
-
 // USER ROLE
 define("BANNED_USER", -1);
 define("NORMAL_USER", 0);
@@ -26,6 +14,28 @@ define('__ROOT_DIR__', str_replace('\\','/',dirname(__FILE__)).'/');
 define('__RELATIVE_ROOT__', (!empty($_SERVER['SCRIPT_NAME'])) ? str_ireplace(rtrim(str_replace('\\','/', realpath(str_replace($_SERVER['SCRIPT_NAME'], '', $_SERVER['SCRIPT_FILENAME']))), '/'), '', __ROOT_DIR__) : '/');// /
 define('__BASE_URL__', SERVER_PROTOCOL.HTTP_HOST.__RELATIVE_ROOT__);
 define('__HOMEPAGE__', __BASE_URL__."dashboard/home");
+define('__PATH_CLASSES__', __ROOT_DIR__.'classes/');
+
+try {
+	# Load Classes and Functions
+	if(!@include_once('classes/stdafx.php')) throw new Exception("Couldn't load Website");
+	
+} catch (Exception $ex) {
+	die($ex);
+}
+
+
+function jsalert($message) { 
+    echo "<script>alert('$message');</script>"; 
+} 
+
+/*
+    -1 = BANNED
+    0 = NORMAL
+    1 = INVENTORY
+    2 = FINANCIAL
+    3 = ADMIN 
+*/
 
 // TESTING PURPOSE FOR ROLE
 $role = ADMIN_USER;
