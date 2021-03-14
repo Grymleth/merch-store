@@ -1,6 +1,6 @@
 <?php
 
-// USER ROLE
+// USER ROLE - TEST
 define("BANNED_USER", -1);
 define("NORMAL_USER", 0);
 define("INVENTORY_USER", 1);

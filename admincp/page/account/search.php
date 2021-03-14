@@ -1,3 +1,22 @@
+<?php
+    $reg_result;
+    try {
+        $account = new Account();
+
+        #registerAccount($strEmail, $strName, $strPass, $strCPass, $strAddress, $strContactNo, $bSex, $dateOfBirth)
+        $reg_result = $account->getAccountList();
+        
+
+
+        # prevent leaks uwu
+        unset($account);
+
+    } catch (Exception $ex) {
+        //throw $th;
+    }
+
+?>
+
     <!-- Begin Page Content -->
     <div class="container-fluid">
         <h1 class="h3 mb-4 text-gray-800">Search User</h1>
@@ -37,72 +56,29 @@
                             </tr>
                         </tfoot>
                         <tbody>
+                            <?php
+                                if(is_array($reg_result)){
+                                    foreach($reg_result as $elem){
+                                        $strSex = $elem["Sex"] == 0 ? "Male" : "Female";
+                                        $strRole = Common::getRoleName(intval($elem["RoleID"]));
+                                        echo
+                                        "
                             <tr>
-                                <td>Tiger Nixon</td>
-                                <td>Edinburgh</td>
-                                <td>2011/04/25</td>
-                                <td>nixontiger@ebanmerch.com</td>
-                                <td>091234567897</td>
-                                <td>Male</td>
-                                <td>System Architect</td>
-                                <td>2011/04/25</td>
-                                <td><button class="btn btn-primary">Edit</button></td>
+                                <td>".$elem["Name"]."</td>
+                                <td>".$elem["Address"]."</td>
+                                <td>".$elem["BirthDate"]."</td>
+                                <td>".$elem["Email"]."</td>
+                                <td>".$elem["ContactNo"]."</td>
+                                <td>".$strSex."</td>
+                                <td>".$strRole."</td>
+                                <td>".$elem["RegDate"]."</td>
+                                <td><button class=\"btn btn-primary\">Edit</button></td>
                             </tr>
-                            <tr>
-                                <td>Garrett Winters</td>
-                                <td>Tokyo</td>
-                                <td>2011/07/25</td>
-                                <td>wintersgarret@ebanmerch.com</td>
-                                <td>091234567897</td>
-                                <td>Male</td>
-                                <td>Accountant</td>
-                                <td>2011/04/25</td>
-                                <td><button class="btn btn-primary">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>Ashton Cox</td>
-                                <td>San Francisco</td>
-                                <td>2009/01/12</td>
-                                <td>coxashton@ebanmerch.com</td>
-                                <td>091234567897</td>
-                                <td>Male</td>
-                                <td>Junior Technical Author</td>
-                                <td>2011/04/25</td>
-                                <td><button class="btn btn-primary">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>Cedric Kelly</td>
-                                <td>Edinburgh</td>
-                                <td>2012/03/29</td>
-                                <td>kellycedric@ebanmerch.com</td>
-                                <td>091234567897</td>
-                                <td>Male</td>
-                                <td>Senior Javascript Developer</td>
-                                <td>2011/04/25</td>
-                                <td><button class="btn btn-primary">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>Airi Satou</td>
-                                <td>Tokyo</td>
-                                <td>2008/11/28</td>
-                                <td>satouairi@ebanmerch.com</td>
-                                <td>091234567897</td>
-                                <td>Female</td>
-                                <td>Accountant</td>
-                                <td>2011/04/25</td>
-                                <td><button class="btn btn-primary">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>Brielle Williamson</td>
-                                <td>New York</td>
-                                <td>2012/12/02</td>
-                                <td>williamsonbrielle@ebanmerch.com</td>
-                                <td>091234567897</td>
-                                <td>Female</td>
-                                <td>Integration Specialist</td>
-                                <td>2011/04/25</td>
-                                <td><button class="btn btn-primary">Edit</button></td>
-                            </tr>
+                                        ";
+                                    }
+                                }
+
+                            ?>
                         </tbody>
                     </table>
                 </div>
