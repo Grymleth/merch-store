@@ -6,20 +6,29 @@ class Account{
         $this->accountDB = new Database("127.0.0.1", "root", "", "account");
 	}
 
-    public function registerAccount($strEmail, $strName, $strPass, $strCPass, $strAddress, $strContactNo){
+    public function registerAccount($strEmail, $strName, $strPass, $strCPass, $strAddress, $strContactNo, $bSex, $dateOfBirth){
         if(!Common::checkValue($strEmail)) return "Email is empty";
         if(!Common::checkValue($strName)) return "Name is empty";
         if(!Common::checkValue($contactNo)) return "Contact No. is empty";
+        if(!Common::checkValue($strAddress)) return "Address is empty";
+        if(!Common::checkValue($bSex)) return "Sex is empty";
         if( 
             !Common::checkValue($strPass) ||
             !Common::checkValue($strCPass)
         ) return "Password or Confirm Password is Empty";
+        if(!$this->isSex($strAddress)) return "This sex is not biologically correct";
+        if(!$this->isAddressAllowed($strAddress)) return "This address is not allowed";
         if($this->emailExists($strEmail)) return "Email is already registered";
         if($this->nameExists($strName)) return "Name is already registered";
         if($this->contactNoExists($strContactNo)) return "Contact No is already registered";
         if($strPass != $strCPass) return "Password or confirm password not the same";
             
-        $result = $this->accountDB->query("INSERT INTO users VALUES(?, ?, ?, ?, ?)", $strEmail, $strName, $strPass, $strContactNo);
+        $hash_pass =  hash("sha512", $strEmail.$strPass);
+
+        $result = $this->accountDB->query("INSERT INTO users(Email, Name, Pass, Address, ContactNo, Sex, BirthDate) VALUES(?, ?, ?, ?, ?, ?, ?)", $strEmail, $strName, $hash_pass, $strAddress, $strContactNo, $bSex, $dateOfBirth);
+        if(!$result) return "Account not succesfully registered for unknown reasons. Contact the Administrator";
+
+        return ""; 
     }
 
     public function validateAccount(){

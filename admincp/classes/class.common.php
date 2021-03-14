@@ -28,6 +28,10 @@ class Common {
 		return (bool)preg_match("/^[0-9a-zA-Z]+$/", $string);	
 	}
 
+	public static function isAddressAllowed($string){
+		return (bool)preg_match("/^[0-9a-zA-Z\s,#-]+$/", $string);	
+	}
+
 	public static function isAlpha($string){
 		return (bool)preg_match("/^[a-zA-Z]+$/", $string);
 	}
@@ -43,6 +47,10 @@ class Common {
 	public static function isEmail($string, $exclude=""){
 		if(self::textHit($string, $exclude)) return false;
 			return (bool)preg_match("/^([a-z0-9])(([-a-z0-9._])*([a-z0-9]))*\@([a-z0-9])(([a-z0-9-])*([a-z0-9]))+(\.([a-z0-9])([-a-z0-9_-])?([a-z0-9])+)+$/i", $string);
+	}
+
+	public static function isSex($value){
+		return ($value == 0 || $value == 1);
 	}
 }
 
