@@ -36,13 +36,25 @@
                         <h3 class="card-title"><?= $product['goodsname'] ?></h3>
                         <h4>₱<?= sprintf('%.2f', $product['goodsprice']) ?></h4>
                         <p class="card-text"><?= $product['goodsdescription'] ?></p>
-                        <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-                        4.0 stars
+
+                        <!-- Reviews -->
+                        <!-- <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+                        4.0 stars -->
                     </div>
                 </div>
-                <!-- /.card -->
 
-                <div class="card card-outline-secondary my-4">
+                <div class="container-fluid p-0 mt-4">
+                    <div class="btn-group mr-4">
+                        <button type="button" class="btn btn-success">Buy Now</button>
+                    </div>
+                    <div class="btn-group mr-4">
+                        <button type="button" class="btn btn-danger">Add to Wishlist</button>
+                    </div>
+                </div>
+
+
+                <!-- Product Reviews -->
+                <!-- <div class="card card-outline-secondary my-4">
                     <div class="card-header">
                         Product Reviews
                     </div>
@@ -64,7 +76,7 @@
                         <hr>
                         <a href="#" class="btn btn-success">Leave a Review</a>
                     </div>
-                </div>
+                </div> -->
                 <!-- /.card -->
 
             </div>

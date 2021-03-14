@@ -5,7 +5,7 @@
         <i class="fa fa-bars"></i>
     </button>
 
-    <a href="/merch-store/" class="brand">
+    <a href="/merch-store/" class="brand nav-link">
         <div class="logo"><i class="fas fa-laugh-wink rotate-n-15"></i></div>
         <span>EBAN <sup>MERCH</sup></span>
     </a>

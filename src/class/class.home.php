@@ -14,7 +14,7 @@ class Home{
 
             $categories = $result;
 
-            // activeCategory variable needed for sidebar
+            // activeCategory variable needed for ssidebar
             $activeCategory = '';
 
             require_once "src/pages/home.php";

@@ -57,29 +57,31 @@
                     </a>
                 </div>
 
+ 
                 <div class="row">
 
                     <?php foreach($products as $product){ ?>
-
                     <div class="product col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
-                            <a href="#"><img class="card-img-top" src="<?= $product['goodsimage'] ?>" alt=""></a>
+                        <div class="card h-100" >
+                            <a href="#"><img class="card-img-top" style="width:15.8rem;" src="<?= $product['goodsimage'] ?>" alt=""></a>
                             <div class="card-body">
                                 <h4 class="card-title">
                                     <a href="/merch-store/products/<?= $product['goodsid'] ?>"><?= $product['goodsname'] ?></a>
                                 </h4>
                                 <h5>₱<?= sprintf('%.2f', $product['goodsprice']) ?></h5>
-                                <p class="card-text"><?= $product['goodsdescription'] ?></p>
+                                <p class="card-text text-truncate"><?= $product['goodsdescription'] ?></p>
                             </div>
-                            <div class="card-footer">
+
+                            <!-- Reviews -->
+                            <!-- <div class="card-footer">
                                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
-
+                    
                     <?php } ?>
-
                 </div>
+
                 <!-- /.row -->
 
                 <!-- Pagination with Jquery-->
