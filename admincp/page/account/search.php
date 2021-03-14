@@ -2,15 +2,13 @@
     <div class="container-fluid">
         <h1 class="h3 mb-4 text-gray-800">Search User</h1>
 
-        
-
 		<!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                <h6 class="m-0 font-weight-bold text-primary">User List</h6>
             </div>
 
-            <!-- Topbar Search -->
+            <!-- Search bar -->
             <form
                 class="d-none d-sm-inline-block form-inline mr-auto ml-4 mt-4 navbar-search">
                 <div class="input-group">
