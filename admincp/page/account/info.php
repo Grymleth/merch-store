@@ -2,19 +2,22 @@
     <div class="container-fluid">
         <h1 class="h3 mb-4 text-gray-800">User Information</h1>
 		<form action="" method="">
+            <!-- Feedback alert -->
+            <div class="alert alert-success">Yay!</div>
+            <div class="alert alert-danger">Oh no!</div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text">Name</span>
                 </div>
                 <input type="text" class="form-control" placeholder="Full Name" name="strName" required>
-                <button class="btn btn-primary" type="editName">Edit</button>
+                <button class="btn btn-primary ml-4" type="editName">Edit</button>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text">Address</span>
                 </div>
                 <input type="text" class="form-control" placeholder="Metro Manila, Philippines" name="strAddress" required>
-                <button class="btn btn-primary" type="editAddress">Edit</button>
+                <button class="btn btn-primary ml-4" type="editAddress">Edit</button>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -29,14 +32,14 @@
                 <input type="number" class="form-control" placeholder="Day" name="iDay"
                 required
                 >
-                <button class="btn btn-primary" type="editBday">Edit</button>
+                <button class="btn btn-primary ml-4" type="editBday">Edit</button>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text">Email</span>
                 </div>
                 <input type="email" class="form-control" placeholder="name@example.com" name="strEmail">
-                <button class="btn btn-primary" type="editMail">Edit</button>
+                <button class="btn btn-primary ml-4" type="editMail">Edit</button>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -47,14 +50,14 @@
                     <span class="input-group-text">Confirm Password</span>
                 </div>
                 <input type="password" class="form-control" placeholder="Confirm Password" name="strCPassword">
-                <button class="btn btn-primary" type="editContactNo">Edit</button>
+                <button class="btn btn-primary ml-4" type="editContactNo">Edit</button>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text">Contact No.</span>
                 </div>
                 <input type="text" class="form-control" placeholder="09123456789" name="strContactNo">
-                <button class="btn btn-primary" type="editContactNo">Edit</button>
+                <button class="btn btn-primary ml-4" type="editContactNo">Edit</button>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -64,7 +67,7 @@
                     <option value="0">Male</option>
                     <option value="1">Female</option>
                 </select>
-                <button class="btn btn-primary" type="editSex">Edit</button>
+                <button class="btn btn-primary ml-4" type="editSex">Edit</button>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -77,7 +80,7 @@
                     <option value="2">FINANCIAL</option>
                     <option value="3">ADMIN</option>
                 </select>
-                <button class="btn btn-primary" type="editRole">Edit</button>
+                <button class="btn btn-primary ml-4" type="editRole">Edit</button>
             </div>
         </form>
     </div>

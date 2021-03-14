@@ -2,27 +2,11 @@
     <div class="container-fluid">
         <h1 class="h3 mb-4 text-gray-800">Search User</h1>
 
-        
-
 		<!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                <h6 class="m-0 font-weight-bold text-primary">User List</h6>
             </div>
-
-            <!-- Topbar Search -->
-            <form
-                class="d-none d-sm-inline-block form-inline mr-auto ml-4 mt-4 navbar-search">
-                <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                        aria-label="Search" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="button">
-                            <i class="fas fa-search fa-sm"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -35,6 +19,8 @@
                                 <th>Contact No.</th>
                                 <th>Sex</th>
                                 <th>Role</th>
+                                <th>Reg. Date</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tfoot>
@@ -46,6 +32,8 @@
                                 <th>Contact No.</th>
                                 <th>Sex</th>
                                 <th>Role</th>
+                                <th>Reg. Date</th>
+                                <th></th>
                             </tr>
                         </tfoot>
                         <tbody>
@@ -57,6 +45,8 @@
                                 <td>091234567897</td>
                                 <td>Male</td>
                                 <td>System Architect</td>
+                                <td>2011/04/25</td>
+                                <td><button class="btn btn-primary">Edit</button></td>
                             </tr>
                             <tr>
                                 <td>Garrett Winters</td>
@@ -66,6 +56,8 @@
                                 <td>091234567897</td>
                                 <td>Male</td>
                                 <td>Accountant</td>
+                                <td>2011/04/25</td>
+                                <td><button class="btn btn-primary">Edit</button></td>
                             </tr>
                             <tr>
                                 <td>Ashton Cox</td>
@@ -75,6 +67,8 @@
                                 <td>091234567897</td>
                                 <td>Male</td>
                                 <td>Junior Technical Author</td>
+                                <td>2011/04/25</td>
+                                <td><button class="btn btn-primary">Edit</button></td>
                             </tr>
                             <tr>
                                 <td>Cedric Kelly</td>
@@ -84,6 +78,8 @@
                                 <td>091234567897</td>
                                 <td>Male</td>
                                 <td>Senior Javascript Developer</td>
+                                <td>2011/04/25</td>
+                                <td><button class="btn btn-primary">Edit</button></td>
                             </tr>
                             <tr>
                                 <td>Airi Satou</td>
@@ -93,6 +89,8 @@
                                 <td>091234567897</td>
                                 <td>Female</td>
                                 <td>Accountant</td>
+                                <td>2011/04/25</td>
+                                <td><button class="btn btn-primary">Edit</button></td>
                             </tr>
                             <tr>
                                 <td>Brielle Williamson</td>
@@ -102,6 +100,8 @@
                                 <td>091234567897</td>
                                 <td>Female</td>
                                 <td>Integration Specialist</td>
+                                <td>2011/04/25</td>
+                                <td><button class="btn btn-primary">Edit</button></td>
                             </tr>
                         </tbody>
                     </table>

@@ -2,7 +2,7 @@
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         if(Common::checkValue($_POST["reg_submit"])){
-            
+
         }
 
     }
@@ -27,6 +27,10 @@
     <div class="container-fluid">
         <h1 class="h3 mb-4 text-gray-800">Register User</h1>
 		<form method="post">
+            <!-- Feedback alert -->
+            <div class="alert alert-success">Yay!</div>
+            <div class="alert alert-danger">Oh no!</div>
+
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text">Name</span>
