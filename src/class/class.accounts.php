@@ -39,7 +39,6 @@ class Accounts{
             }
             else{
                 $data['error'] = 'Invalid email or password.';
-                
             }
         }
         
@@ -58,6 +57,8 @@ class Accounts{
                 'email' => trim($_POST['email']),
                 'name' => trim($_POST['firstName']) . ' ' . trim($_POST['lastName']),
                 'password' => trim($_POST['password']),
+                'birthdate' => trim($_POST['birthdate']),
+                'sex' => trim($_POST['sex']),
                 'address' => trim($_POST['address']),
                 'contactno' => trim($_POST['contactno']),
                 'repeatPassword' => trim($_POST['repeatPassword']),
@@ -112,8 +113,24 @@ class Accounts{
                 }
             }
 
+            //validate birthday and if legal
+            if(empty($data['birthdate'])){
+                array_push($error, 'Please enter date of birth.');
+            }
+            else{
+                if(!$this->isLegalDate($data['birthdate'])){
+                    array_push($error, 'Must be 13+ years old.');
+                }
+            }
+
+            // validate address
             if(empty($data['address'])){
                 array_push($error, 'Please enter address.');
+            }
+
+            // validate sex
+            if(!($data['sex'] == '0' || $data['sex'] == '1')){
+                array_push($error, 'Please select valid sex.');
             }
 
             // Validate contact number
@@ -145,10 +162,20 @@ class Accounts{
 
     public function registerUser($data){
         // change this please
-        $result = $this->db->query('INSERT INTO users (email, name, pass, address, contactno)
-            VALUES(?, ?, ?, ?, ?)', array($data['email'], $data['name'], $data['password'], $data['address'], $data['contactno']));
+        $result = $this->db->query('INSERT INTO users (email, name, pass, address, contactno, birthdate, sex)
+            VALUES(?, ?, ?, ?, ?, ?, ?)', 
+            array($data['email'], $data['name'], $data['password'], $data['address'], $data['contactno'], $data['birthdate'], $data['sex']));
 
         return $result;
+    }
+
+    public function isLegalDate($date){
+        $_date = explode("-", $date);
+        $age = (date("md", date("U", mktime(0, 0, 0, $_date[1], $_date[2], $_date[0]))) > date("md")
+            ? ((date("Y") - $_date[0]) - 1)
+            : (date("Y") - $_date[0]));
+        # Jeanne Calment oldest human in recorded history with age of 122
+        return($age >= 13 && $age <= 122);
     }
 }
 

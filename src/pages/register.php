@@ -37,7 +37,7 @@
                                         echo "<div class=\"alert alert-danger\">". $error[0]. " </div>";
                                     }
                                     else{
-                                        echo "<div class=\"alert alert-success\">You have successfully registered!. Click <a href=\"" . __BASE_URL__ . "accounts/login\">here</a> to login.</div>";
+                                        echo "<div class=\"alert alert-success\">You have successfully registered! Click <a href=\"" . __BASE_URL__ . "accounts/login\">here</a> to login.</div>";
                                     }
                                 }
                                 
@@ -71,6 +71,19 @@
                                     </div>
                                 </div>
                                 <hr>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')"class="form-control form-control-user"
+                                            id="birthday" name="birthdate" placeholder="Date of Birth">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <select class="form-control form-control-user-select" name="sex" id="sex" required>
+                                            <option value="-1">Sex</option>
+                                            <option value="0">Male</option>
+                                            <option value="1">Female</option>
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user"

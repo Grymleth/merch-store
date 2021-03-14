@@ -6,7 +6,7 @@ class Product{
             $conn = new Database('localhost', 'root', '', 'inventory');
 
             // Get product from database
-            $result = $conn->query_fetch("SELECT goodsid, goodsname, goodsprice, goodsimage, goodsdescription, goodscategory FROM goodslistinfo WHERE goodsid = ? ", array($param));
+            $result = $conn->query_fetch("SELECT goodsid, goodsname, goodsprice, goodsimage, goodsdescription, goodscategory, stocks FROM goodslistinfo WHERE goodsid = ? ", array($param));
 
             // check if product exist
             if(!is_array($result)){

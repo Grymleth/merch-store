@@ -35,6 +35,11 @@
                     <div class="card-body">
                         <h3 class="card-title"><?= $product['goodsname'] ?></h3>
                         <h4>₱<?= sprintf('%.2f', $product['goodsprice']) ?></h4>
+                        <?php if($product['stocks'] > 0){ ?>
+                        <div class="text-success">In Stock</div>
+                        <?php }else{ ?>
+                        <div class="text-danger">Out of Stock</div>
+                        <?php } ?>
                         <p class="card-text"><?= $product['goodsdescription'] ?></p>
 
                         <!-- Reviews -->
@@ -50,6 +55,7 @@
                     <div class="btn-group mr-4">
                         <button type="button" class="btn btn-danger">Add to Wishlist</button>
                     </div>
+                    
                 </div>
 
 
