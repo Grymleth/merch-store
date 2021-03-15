@@ -1,18 +1,16 @@
 <?php
-    $reg_result;
+    $reg_result = NULL;
     try {
         $account = new Account();
 
         #registerAccount($strEmail, $strName, $strPass, $strCPass, $strAddress, $strContactNo, $bSex, $dateOfBirth)
         $reg_result = $account->getAccountList();
-        
-
 
         # prevent leaks uwu
         unset($account);
 
     } catch (Exception $ex) {
-        //throw $th;
+        die($ex);
     }
 
 ?>

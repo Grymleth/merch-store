@@ -1,7 +1,7 @@
 <?php
     $reg_result = "_";
     if($_SERVER["REQUEST_METHOD"] == "POST"){
-        if(Common::checkValue($_POST["reg_button_submit"])){
+        if(isset($_POST["reg_button_submit"])){
             try {
                 $account = new Account();
 
@@ -21,7 +21,7 @@
                 unset($account);
 
             } catch (Exception $ex) {
-                //throw $th;
+                die($ex);
             }
         }
 
@@ -67,7 +67,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">Date of Birth</span>
                 </div>
-                <input type="date" class="form-control" placeholder="Year" name="reg_dateOfBirth" required>
+                <input type="date" class="form-control" name="reg_dateOfBirth" required>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -101,7 +101,7 @@
                 </select>
             </div>
             <div class="container text-center">
-                <button type="submit" name="reg_button_submit" value="submit" class="btn btn-primary btn-md">Register</button>
+                <button type="submit" name="reg_button_submit" class="btn btn-primary btn-md">Register</button>
             </div>
         </form>
     </div>

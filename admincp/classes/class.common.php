@@ -45,8 +45,12 @@ class Common {
 		return (bool)preg_match("/^[a-zA-Z]+$/", $string);
 	}
 
+	public static function isNameAllowed($string){
+		return (bool)preg_match("/^[a-zA-Z\s.]+$/", $string);
+	}
+
 	public static function isPasswordLength($string){
-		return(strlen($string) < 8 || strlen($string) > 32);
+		return (bool)(strlen($string) > 8 && strlen($string) < 32);
 	}
 
 	public static function isEmail($string, $exclude=""){
@@ -55,7 +59,11 @@ class Common {
 	}
 
 	public static function isSex($value){
-		return ($value == 0 || $value == 1);
+		return (bool)($value == 0 || $value == 1);
+	}
+
+	public static function isUnsignedNumber($integer){
+		return (bool)preg_match("/^\+?[0-9]+$/",$integer);
 	}
 
 	public static function getRoleName($value){
