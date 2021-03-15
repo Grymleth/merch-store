@@ -14,6 +14,9 @@ class Accounts{
             case 'register':
                 $this->register();
                 break;
+            case 'profile':
+                $this->profile();
+                break;
             default:
                 new Error404();
                 break;
@@ -89,17 +92,18 @@ class Accounts{
                 }
             }
 
-            $passwordValidation = "/^(.{0,7}|[^a-z]*|[^\d]*)$/i";
+            $passwordValidation = "/.*[0-9].*/i";
             $contactValidation = "/^[0-9]*$/";
 
             // validate password on length and numeric values
             if(empty($data['password'])){
                 array_push($error, 'Please enter password.');
             }
-            else if(strlen($data['password'] <= 6)){
-                array_push($error, 'Password must be at least 6 characters.');
+            else if(strlen($data['password']) <= 8 || strlen($data['password']) >= 32){
+                array_push($error, 'Password length must be greater than 8 but less than 32.');
             }
             else if(!preg_match($passwordValidation, $data['password'])){
+                echo $data['password'];
                 array_push($error, 'Password must have at least 1 numeric value.');
             }
 
@@ -152,6 +156,10 @@ class Accounts{
 
         require_once "src/pages/register.php";
         
+    }
+
+    public function profile(){
+        require_once "src/pages/profile.php";
     }
 
     public function findUserByEmail($email){

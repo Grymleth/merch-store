@@ -41,16 +41,12 @@
                         <div class="text-danger">Out of Stock</div>
                         <?php } ?>
                         <p class="card-text"><?= $product['goodsdescription'] ?></p>
-
-                        <!-- Reviews -->
-                        <!-- <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-                        4.0 stars -->
                     </div>
                 </div>
 
                 <div class="container-fluid p-0 mt-4">
                     <div class="btn-group mr-4">
-                        <button type="button" class="btn btn-success">Buy Now</button>
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#checkoutModal">Buy Now</button>
                     </div>
                     <div class="btn-group mr-4">
                         <button type="button" class="btn btn-danger">Add to Wishlist</button>
@@ -58,33 +54,42 @@
                     
                 </div>
 
+                <!-- Checkout Modal -->
 
-                <!-- Product Reviews -->
-                <!-- <div class="card card-outline-secondary my-4">
-                    <div class="card-header">
-                        Product Reviews
+                <div class="modal fade" id="checkoutModal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title">Complete Purchase</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <?php require "src/common/checkoutModal.php"; ?>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique
-                            necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia,
-                            necessitatibus quae sint natus.</p>
-                        <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-                        <hr>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique
-                            necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia,
-                            necessitatibus quae sint natus.</p>
-                        <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-                        <hr>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique
-                            necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia,
-                            necessitatibus quae sint natus.</p>
-                        <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-                        <hr>
-                        <a href="#" class="btn btn-success">Leave a Review</a>
-                    </div>
-                </div> -->
-                <!-- /.card -->
+                </div>
 
+                <!-- Checkout Success Modal -->
+                <div class="modal fade show" id="successModal" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title">Success</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="alert alert-success">Purchase Complete</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
             </div>
             <!-- /.col-lg-9 -->
 
@@ -94,9 +99,18 @@
     <!-- /.container -->
 
     <!-- Footer -->
+    
     <?php require "src/common/footer.php"; ?>
     <?php require "src/common/scripts.php"; ?>
 
+    <?php if($_SERVER['REQUEST_METHOD'] == 'POST'){ ?>
+    <script>
+        $(document).ready(() => {
+            console.log('hello world');
+            $("#successModal").modal('show');
+        });
+    </script>
+    <?php } ?>
 </body>
 
 </html>
