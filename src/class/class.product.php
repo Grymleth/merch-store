@@ -6,7 +6,7 @@ class Product{
         if($param != null){
             $this->db = new Database('localhost', 'root', '', 'inventory');
 
-            // handle if REQUEST is post
+            // handle checkout POST request
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $param = $_POST['productid'];
             }
@@ -28,7 +28,6 @@ class Product{
             var_dump($ex);
         }
         
-
         // check if product exist
         if(!is_array($result)){
             new Error404();
@@ -41,6 +40,21 @@ class Product{
         $categories = $result;
         // determine which category the product is in
         $activeCategory = $categories[$product['goodscategory'] - 1]['goodscatname'];
+        
+        // checkout modal data, auto complete shipping details
+        if(isset($_SESSION['login'])){
+            if($_SESSION['login']){
+                $accountDb = new Account();
+                $result = $accountDb->getAccountInfo($_SESSION['userId']);
+
+                $shippingDetails = [
+                    'name' => $result['Name'],
+                    'email' => $result['Email'],
+                    'address' => $result['Address']
+                ];
+            }
+}
+
         require_once "src/pages/product.php";
     }
 

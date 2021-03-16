@@ -17,7 +17,7 @@
             $accountInfo = $account->getAccountInfo($accountUID);
         }
         
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
+        if($_SERVER["REQUEST_METHOD"] == "POST" && Common::checkValue($accountUID)  && intval($accountUID) > 0 ){
             if(isset($_POST["info_confirmName"]) && isset($_POST["info_strName"])) 
                 $reg_result = $account->changeName($accountUID, $_POST["info_strName"]);
             else if (isset($_POST["info_confirmAddress"]) && isset($_POST["info_strAddress"])) 
@@ -26,14 +26,20 @@
                 $reg_result = $account->changeBirth($accountUID, $_POST["info_dateOfBirth"]);
             else if (isset($_POST["info_confirmMail"]) && isset($_POST["info_strEmail"]) && isset($_POST["info_strEmailPass"]))
                 $reg_result = $account->changeEmail($accountUID, $_POST["info_strEmail"], $_POST["info_strEmailPass"]);
-            else if (isset($_POST["info_confirmPass"]) && isset($_POST["info_strNewPassword"]) && isset($_POST["info_strNewCPassword"]))
-            #public function changePassword($accountID, $strPass, $strCPass, $isAdmin = false, $strCurrPass = "")
+            else if (isset($_POST["info_confirmPass"]) && isset($_POST["info_strNewPassword"]) && isset($_POST["info_strNewCPassword"])){
+                #public function changePassword($accountID, $strPass, $strCPass, $isAdmin = false, $strCurrPass = "")
                 if($isAdmin)
                     $reg_result = $account->changePassword($accountUID, $_POST["info_strNewPassword"], $_POST["info_strNewCPassword"], $isAdmin);
                 else{
-                    if(isset($_POST["info_strCurrPassword"]))
-                        $reg_result = $account->changePassword($accountUID, $_POST["info_strNewPassword"], $_POST["info_strNewCPassword"], $isAdmin, $_POST["info_strCurrPassword"]);
+                if(isset($_POST["info_strCurrPassword"]))
+                    $reg_result = $account->changePassword($accountUID, $_POST["info_strNewPassword"], $_POST["info_strNewCPassword"], $isAdmin, $_POST["info_strCurrPassword"]);
                 }
+            } else if (isset($_POST["info_confirmContactNo"]) && isset($_POST["info_strContactNo"])) 
+                $reg_result = $account->changeContactNo($accountUID, $_POST["info_strContactNo"]);
+            else if (isset($_POST["info_confirmSex"]) && isset($_POST["info_iSex"])) 
+                $reg_result = $account->changeSex($accountUID, $_POST["info_iSex"]);
+            else if (isset($_POST["info_confirmRole"]) && isset($_POST["info_iRole"])) 
+                $reg_result = $account->changeRole($accountUID, $_POST["info_iRole"]);
             $accountInfo = $account->getAccountInfo($accountUID);
         }
         
@@ -227,7 +233,7 @@
                                         </div>
                                         <?php
                                             echo "
-                                        <input type=\"text\" placeholder=\"09123456789\" name=\"info_strContactNo\" class=\"form-control\" value=\"".$accountInfo["ContactNo"]."\" 
+                                        <input type=\"text\" placeholder=\"+639123456789\" name=\"info_strContactNo\" class=\"form-control\" value=\"".$accountInfo["ContactNo"]."\" 
                                             ";
                                             if(isset($_POST["info_editContactNo"])){
                                                 echo " 

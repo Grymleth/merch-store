@@ -46,11 +46,12 @@
 
                 <div class="container-fluid p-0 mt-4">
                     <div class="btn-group mr-4">
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#checkoutModal">Buy Now</button>
+                        <button type="button" class="btn btn-success" data-toggle="modal" 
+                        data-target="<?= $product['stocks'] > 0 ? '#checkoutModal' : '#noStockModal' ?>">Buy Now</button>
                     </div>
-                    <div class="btn-group mr-4">
+                    <!-- <div class="btn-group mr-4">
                         <button type="button" class="btn btn-danger">Add to Wishlist</button>
-                    </div>
+                    </div> -->
                     
                 </div>
 
@@ -72,6 +73,23 @@
                     </div>
                 </div>
 
+                <!-- Out of Stock Modal -->
+                <div class="modal fade" id="noStockModal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title">Out of Stock</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="alert alert-danger">This item is out of stock!</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Checkout Success Modal -->
                 <div class="modal fade show" id="successModal" role="dialog">
                     <div class="modal-dialog" role="document">
@@ -88,8 +106,6 @@
                         </div>
                     </div>
                 </div>
-
-                
             </div>
             <!-- /.col-lg-9 -->
 
