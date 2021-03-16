@@ -1,6 +1,6 @@
 <?php 
 
-class Category{
+class CategoryRoute{
     public function __construct($param = null){
         if($param != null){
             $conn = new Database('localhost', 'root', '', 'inventory');

@@ -1,11 +1,10 @@
 <?php 
 
-class Product{
+class ProductRoute{
     private $db;
     public function __construct($param = null){
         if($param != null){
             $this->db = new Database('localhost', 'root', '', 'inventory');
-            var_dump($param);
 
             // handle POST request
             if($_SERVER['REQUEST_METHOD'] == 'POST'){

@@ -1,5 +1,5 @@
 <?php 
-class Accounts{
+class AccountsRoute{
     private $db;
     public function __construct($param = null){
         $this->db = new Database(DB_HOST, DB_ACCOUNT_USER, DB_INVENTORY_PASS, DB_ACCOUNT_NAME);

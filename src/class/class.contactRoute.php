@@ -1,6 +1,6 @@
 <?php 
 
-class Contact{
+class ContactRoute{
     public function __construct($param = null){
         if($param == null){
             require_once "src/pages/contact.php";

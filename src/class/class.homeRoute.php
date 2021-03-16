@@ -1,6 +1,6 @@
 <?php 
 
-class Home{
+class HomeRoute{
     public function __construct($param = null){
         if($param == null){
 
