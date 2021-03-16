@@ -1,5 +1,4 @@
 <?php 
-
 class Accounts{
     private $db;
     public function __construct($param = null){
@@ -33,11 +32,12 @@ class Accounts{
             // hash password
             $data['password'] = hash('SHA512', $data['email'] . $data['password']);
 
-            $result = $this->db->query_fetch_single('SELECT email, pass, name FROM users WHERE email = ? AND pass = ?', array($data['email'], $data['password']));
+            $result = $this->db->query_fetch_single('SELECT accountid, email, pass, name FROM users WHERE email = ? AND pass = ?', array($data['email'], $data['password']));
             if($result){
                 // redirect to home page
                 $_SESSION['login'] = true;
                 $_SESSION['name'] = $result['name'];
+                $_SESSION['userId'] = $result['accountid'];
                 header('location: '. __BASE_URL__ . 'home');
             }
             else{

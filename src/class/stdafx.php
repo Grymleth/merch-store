@@ -2,6 +2,8 @@
 
 include "class.home.php";
 include "class.product.php";
+include "class.common.php";
+include "class.account.php";
 include "class.category.php";
 include "class.accounts.php";
 include "class.contact.php";
