@@ -1,3 +1,14 @@
+<?php 
+
+    if(isset($_SESSION['login'])){
+        if($_SESSION['login']){
+            $conn = new Account();
+            $navBarName = $conn->getAccountName($_SESSION['userId'])['Name'];
+        }
+    }
+
+?>
+
 <!-- Topbar -->
 <nav class="navbar navbar-expand navbar-light bg-gradient-primary topbar mb-4 static-top shadow">
     <!-- Sidebar Toggle (Topbar) -->
@@ -61,7 +72,7 @@
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline small"><?= $_SESSION['name'] ?></span>
+                <span class="mr-2 d-none d-lg-inline small"><?= $navBarName ?></span>
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

@@ -151,9 +151,9 @@ class Account{
 	}
 
     public function nameExists($name) {
-		if(!Common::isNameAllowed($name)) return false;
-		$result = $this->accountDB->query_fetch_single("SELECT * FROM users WHERE name = ?", array($name));
-		if(is_array($result)) return true;
+		// if(!Common::isNameAllowed($name)) return false;
+		// $result = $this->accountDB->query_fetch_single("SELECT * FROM users WHERE name = ?", array($name));
+		// if(is_array($result)) return true;
 		return false;
 	}
 
@@ -164,6 +164,11 @@ class Account{
 
     public function getAccountInfo($uid){
         $result = $this->accountDB->query_fetch_single("SELECT users.*, roleinfo.RoleID FROM users INNER JOIN roleinfo ON users.AccountID = ? AND roleinfo.AccountID = ?", array($uid, $uid));
+        if(is_array($result)) return $result;
+    }
+
+    public function getAccountName($uid){
+        $result = $this->accountDB->query_fetch_single("SELECT Name FROM users WHERE AccountID = ?", array($uid));
         if(is_array($result)) return $result;
     }
 
