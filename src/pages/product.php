@@ -45,13 +45,17 @@
                 </div>
 
                 <div class="container-fluid p-0 mt-4">
-                    <div class="btn-group mr-4">
-                        <button type="button" class="btn btn-success" data-toggle="modal" 
-                        data-target="<?= $product['stocks'] > 0 ? '#checkoutModal' : '#noStockModal' ?>">Buy Now</button>
-                    </div>
-                    <!-- <div class="btn-group mr-4">
-                        <button type="button" class="btn btn-danger">Add to Wishlist</button>
-                    </div> -->
+                    <form action="<?= __BASE_URL__ ?>products/checkout" method="POST">
+                        <div class="btn-group mr-4">
+                            <button type="submit" class="btn btn-success">Buy Now</button>
+                        </div>
+
+                        <label for="quantityRange">Quantity</label>
+                        <input type="number" name="quantity" class="" min="1" 
+                        max="<?= $product['stocks'] < 10 ? $product['stocks'] : '10' ?>" value="1" id="quantityRange">
+
+                        <input type="hidden" name="goodsid" value="<?= $product['goodsid'] ?>">
+                    </form>
                     
                 </div>
 
@@ -67,7 +71,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <?php require "src/common/checkoutModal.php"; ?>
+                                
                             </div>
                         </div>
                     </div>

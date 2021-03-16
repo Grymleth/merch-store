@@ -52,17 +52,6 @@ class Route{
         }
 
         new Error404();
-        // $uriGetParam = isset($_GET['uri']) ? '/' . $_GET['uri'] : '/';
-
-        // foreach($this->_uri as $key => $value){
-        //     if(preg_match("#^$value$#", $uriGetParam)){
-        //         $useMethod = $this->_method[$key];
-        //         new $useMethod();
-        //         return;
-        //     }
-        // }
-
-        // new Error404();
     }
 }
 
