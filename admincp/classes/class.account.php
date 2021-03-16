@@ -25,8 +25,31 @@ class Account{
         return ""; 
     }
 
-    public function validateAccount(){
+    public function loginAccount($strEmail, $strPass, $isRemember = false /* Todo if still have time lols */){
+        if(!empty($ret = Common::validateEmail($strEmail))) return $ret;
 
+        $hash_pass =  hash("sha512", $strEmail.$strPass);
+        $result = $this->accountDB->query_fetch_single("SELECT AccountID FROM users WHERE Email = ? AND Pass = ?", array($strEmail, $hash_pass));
+        if(!is_array($result)) return "Login Failed";
+
+        $accountInfo = $this->getAccountInfo(intval($result["AccountID"]));
+        if(!is_array($accountInfo)) return "System Error! Contact Administrator";
+        if(Common::getRoleName(intval($accountInfo["RoleID"])) == "BANNED_USER" || Common::getRoleName(intval($accountInfo["RoleID"])) == "NORMAL_USER")
+            return "Login Failed";
+
+        $session = Session::getInstance();
+        $session->accountID = $accountInfo["AccountID"];
+        $session->roleID = $accountInfo["RoleID"];
+
+        header("Location: dashboard/home");
+        die();
+    }
+
+    public function logoutAccount(){
+        $session = Session::getInstance();
+        $session->destroy();
+        header("Location: ".__BASE_URL__);
+        die();
     }
     
     public function changePassword($accountID, $strPass, $strCPass, $isAdmin = false, $strCurrPass = ""){
@@ -50,7 +73,6 @@ class Account{
         if(!$result) return "Change password request not successfully registered for unknown reasons. Contact Administrator";
 
         return "";
-
     }
 
     public function changeRole($accountID, $newRole){
@@ -155,6 +177,16 @@ class Account{
 
     public function getAccountInfo($uid){
         $result = $this->accountDB->query_fetch_single("SELECT users.*, roleinfo.RoleID FROM users INNER JOIN roleinfo ON users.AccountID = ? AND roleinfo.AccountID = ?", array($uid, $uid));
+        if(is_array($result)) return $result;
+    }
+
+    public function getUserRole($uid){
+        $result = $this->accountDB->query_fetch_single("SELECT RoleID FROM roleinfo WHERE AccountID = ?", array($uid));
+        if(is_array($result)) return $result;
+    }
+
+    public function getUserName($uid){
+        $result = $this->accountDB->query_fetch_single("SELECT Name FROM users WHERE AccountID = ?", array($uid));
         if(is_array($result)) return $result;
     }
 

@@ -147,7 +147,7 @@ class Common {
 
 	public static function validateRole($iRole){
 		if(!($iRole >= -1 && $iRole <= 3)) return "Invalid role selected";
-		
+
 		return "";
 	}
 }

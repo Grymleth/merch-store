@@ -1,46 +1,60 @@
 <?php
+
+    $session = Session::getInstance();
     $accountInfo = NULL;
-    $accountUID = 1; // get from session for now hardcode
-    $isAdmin = true; // get from session currently hardcoded
+    $accountID = $session->accountID;
+    $isAdmin = false;
     $reg_result = "_";
     try {
         $account = new Account();
-        if(isset($_GET["request"])){
-            $accountUID = $_GET["request"];
-            $accountInfo = $account->getAccountInfo($accountUID);
-    
+        $accountInfo = $account->getAccountInfo($accountID);
+        if(Common::getRoleName(intval($accountInfo["RoleID"])) == "ADMIN_USER")
+            $isAdmin = true;
+
+        if(isset($_GET["request"]) && $isAdmin){
+            $accountID = $_GET["request"];
+            $accountInfo = $account->getAccountInfo($accountID);
             if(!is_array($accountInfo)){
                 include(__ROOT_DIR__."page/404.php");
                 die();
             }
+        } else if (isset($_GET["request"])){
+            include(__ROOT_DIR__."page/404.php");
+            die();
         } else {
-            $accountInfo = $account->getAccountInfo($accountUID);
+            $accountInfo = $account->getAccountInfo($accountID);
         }
         
-        if($_SERVER["REQUEST_METHOD"] == "POST" && Common::checkValue($accountUID)  && intval($accountUID) > 0 ){
-            if(isset($_POST["info_confirmName"]) && isset($_POST["info_strName"])) 
-                $reg_result = $account->changeName($accountUID, $_POST["info_strName"]);
+        if($_SERVER["REQUEST_METHOD"] == "POST" && Common::checkValue($accountID)  && intval($accountID) > 0 ){
+            if(isset($_POST["info_confirmName"]) && isset($_POST["info_strName"]))
+                $reg_result = $account->changeName($accountID, $_POST["info_strName"]);
             else if (isset($_POST["info_confirmAddress"]) && isset($_POST["info_strAddress"])) 
-                $reg_result = $account->changeAddress($accountUID, $_POST["info_strAddress"]);
+                $reg_result = $account->changeAddress($accountID, $_POST["info_strAddress"]);
             else if (isset($_POST["info_confirmBday"]) && isset($_POST["info_dateOfBirth"])) 
-                $reg_result = $account->changeBirth($accountUID, $_POST["info_dateOfBirth"]);
+                $reg_result = $account->changeBirth($accountID, $_POST["info_dateOfBirth"]);
             else if (isset($_POST["info_confirmMail"]) && isset($_POST["info_strEmail"]) && isset($_POST["info_strEmailPass"]))
-                $reg_result = $account->changeEmail($accountUID, $_POST["info_strEmail"], $_POST["info_strEmailPass"]);
+                $reg_result = $account->changeEmail($accountID, $_POST["info_strEmail"], $_POST["info_strEmailPass"]);
             else if (isset($_POST["info_confirmPass"]) && isset($_POST["info_strNewPassword"]) && isset($_POST["info_strNewCPassword"])){
                 #public function changePassword($accountID, $strPass, $strCPass, $isAdmin = false, $strCurrPass = "")
                 if($isAdmin)
-                    $reg_result = $account->changePassword($accountUID, $_POST["info_strNewPassword"], $_POST["info_strNewCPassword"], $isAdmin);
+                    $reg_result = $account->changePassword($accountID, $_POST["info_strNewPassword"], $_POST["info_strNewCPassword"], $isAdmin);
                 else{
                 if(isset($_POST["info_strCurrPassword"]))
-                    $reg_result = $account->changePassword($accountUID, $_POST["info_strNewPassword"], $_POST["info_strNewCPassword"], $isAdmin, $_POST["info_strCurrPassword"]);
+                    $reg_result = $account->changePassword($accountID, $_POST["info_strNewPassword"], $_POST["info_strNewCPassword"], $isAdmin, $_POST["info_strCurrPassword"]);
                 }
             } else if (isset($_POST["info_confirmContactNo"]) && isset($_POST["info_strContactNo"])) 
-                $reg_result = $account->changeContactNo($accountUID, $_POST["info_strContactNo"]);
+                $reg_result = $account->changeContactNo($accountID, $_POST["info_strContactNo"]);
             else if (isset($_POST["info_confirmSex"]) && isset($_POST["info_iSex"])) 
-                $reg_result = $account->changeSex($accountUID, $_POST["info_iSex"]);
-            else if (isset($_POST["info_confirmRole"]) && isset($_POST["info_iRole"])) 
-                $reg_result = $account->changeRole($accountUID, $_POST["info_iRole"]);
-            $accountInfo = $account->getAccountInfo($accountUID);
+                $reg_result = $account->changeSex($accountID, $_POST["info_iSex"]);
+            else if (isset($_POST["info_confirmRole"]) && isset($_POST["info_iRole"])){
+                if($isAdmin){
+                    if($accountID == $session->accountID)
+                        $reg_result = "You can't change your role for yourself!";
+                    else
+                        $reg_result = $account->changeRole($accountID, $_POST["info_iRole"]);
+                }
+            }
+            $accountInfo = $account->getAccountInfo($accountID);
         }
         
         
@@ -260,29 +274,37 @@
                     echo "
                 <select class=\"form-control\" name=\"info_iRole\" 
                     ";
-                    if(!isset($_POST["info_editRole"])) 
+                    if(!isset($_POST["info_editRole"])) {
                     echo " 
                 disabled >";
-                    else
+                echo "
+                    <option selected>". Common::getRoleName(intval($accountInfo["RoleID"])) ."</option>
+                </select>
+                    ";
+                        if($isAdmin){
+                            echo "
+                        <button class=\"btn btn-primary ml-4\" type=\"submit\" name=\"info_editRole\">Edit</button>
+                            ";
+                        }
+                    }
+                    else{
                     echo "
                 >
                     ";
                     echo "
-                    <option ". (intval($accountInfo["RoleID"]) == -1 ? "selected" : "") ." value=\"-1\">BANNED</option>
-                    <option ". (intval($accountInfo["RoleID"]) == 0 ? "selected" : "") ." value=\"0\">NORMAL</option>
-                    <option ". (intval($accountInfo["RoleID"]) == 1 ? "selected" : "") ." value=\"1\">INVENTORY</option>
-                    <option ". (intval($accountInfo["RoleID"]) == 2 ? "selected" : "") ." value=\"2\">FINANCIAL</option>
-                    <option ". (intval($accountInfo["RoleID"]) == 3 ? "selected" : "") ." value=\"3\">ADMIN</option>
+                    <option ". (intval($accountInfo["RoleID"]) == -1 ? "selected" : "") ." value=\"-1\">BANNED_USER</option>
+                    <option ". (intval($accountInfo["RoleID"]) == 0 ? "selected" : "") ." value=\"0\">NORMAL_USER</option>
+                    <option ". (intval($accountInfo["RoleID"]) == 1 ? "selected" : "") ." value=\"1\">INVENTORY_USER</option>
+                    <option ". (intval($accountInfo["RoleID"]) == 2 ? "selected" : "") ." value=\"2\">FINANCIAL_USER</option>
+                    <option ". (intval($accountInfo["RoleID"]) == 3 ? "selected" : "") ." value=\"3\">ADMIN_USER</option>
                 </select>
                     ";
-                    if(isset($_POST["info_editRole"])) 
-                    echo "
-                <button class=\"btn btn-primary ml-4\" type=\"submit\" name=\"info_confirmRole\">Confirm</button>
-                    ";
-                    else
-                    echo "
-                <button class=\"btn btn-primary ml-4\" type=\"submit\" name=\"info_editRole\">Edit</button>
-                    ";                    
+                        if($isAdmin){
+                            echo "
+                        <button class=\"btn btn-primary ml-4\" type=\"submit\" name=\"info_confirmRole\">Confirm</button>
+                            ";
+                        }   
+                    }              
                 ?>
             </div>
         </form>
