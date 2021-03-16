@@ -36,7 +36,6 @@ class Accounts{
             if($result){
                 // redirect to home page
                 $_SESSION['login'] = true;
-                $_SESSION['name'] = $result['name'];
                 $_SESSION['userId'] = $result['accountid'];
                 header('location: '. __BASE_URL__ . 'home');
             }
