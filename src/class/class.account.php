@@ -1,7 +1,7 @@
 <?php
 
 class Account{
-
+    
     function __construct() {
         $this->accountDB = new Database("127.0.0.1", "root", "", "account");
 	}

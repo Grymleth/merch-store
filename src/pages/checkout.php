@@ -33,14 +33,14 @@
                         <ul class="list-group mb-3">
                             <li class="list-group-item d-flex justify-content-between lh-condensed">
                                 <div>
-                                    <h6 class="my-0"><?= $product['goodsname'] . ' x ' . $quantity ?> </h6>
+                                    <h6 class="my-0"><?= $product['goodsname'] . ' x ' . $data['quantity'] ?> </h6>
                                     <small class="text-muted"><?= $product['goodsdescription'] ?></small>
                                 </div>
                                 <span class="text-muted"><?= sprintf('₱%.2f', $product['goodsprice']) ?></span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between">
                                 <span>Total (PHP)</span>
-                                <strong><?= sprintf('₱%.2f', $product['goodsprice'] * $quantity) ?></strong>
+                                <strong><?= sprintf('₱%.2f', $product['goodsprice'] * $data['quantity']) ?></strong>
                             </li>
                         </ul>
                     </div>
@@ -88,6 +88,7 @@
 
                             <!-- Hidden fields -->
                             <input type="hidden" name="goodsid" value="<?= $product['goodsid'] ?>">
+                            <input type="hidden" name="quantity" value="<?= $data['quantity'] ?>">
 
                             <hr class="mb-4">
                             <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
