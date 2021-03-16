@@ -30,7 +30,7 @@
             </div>           
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text">Product Description</span>
+                    <span class="input-group-text">Product Category</span>
                 </div>
                 <select class="form-control" name="iSex">
                     <option value="0">Hats</option>
@@ -40,6 +40,13 @@
                     <option value="1">Shirts</option>
                     <option value="1">Miscellaneous</option>
                 </select>
+                <button class="btn btn-primary ml-4" type="editDesc">Edit</button>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Product Description</span>
+                </div>
+                <input type="text" class="form-control" placeholder="" name="prodPrice">
                 <button class="btn btn-primary ml-4" type="editDesc">Edit</button>
             </div>
             <div class="input-group mb-3">
