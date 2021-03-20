@@ -69,7 +69,7 @@ $arrAdminSideBar = array(
         array(
             array( array(FINANCIAL_USER, ADMIN_USER), "overview", "Overview"),
             array( array(FINANCIAL_USER, ADMIN_USER), "transaction", "Transaction Logs"),
-            array( array(FINANCIAL_USER, ADMIN_USER), "soa", "Statement of Account"),
+            array( array(FINANCIAL_USER, ADMIN_USER), "trinfo", "Transaction Info"),
         ),
     ),
     array( array(INVENTORY_USER, ADMIN_USER), "Inventory", "fa-shopping-bag", "inventory",
