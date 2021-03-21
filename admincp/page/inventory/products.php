@@ -1,3 +1,21 @@
+<?php
+    $reg_result = NULL;
+    try {
+        $inventory = new Inventory();
+
+        #registerAccount($strEmail, $strName, $strPass, $strCPass, $strAddress, $strContactNo, $bSex, $dateOfBirth)
+        $prod_result = $inventory->getProductList();
+
+        # prevent leaks uwu
+        unset($inventory);
+
+    } catch (Exception $ex) {
+        die($ex);
+    }
+
+?>
+
+
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
@@ -16,6 +34,7 @@
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Category</th>
+                                <th>Registration Date</th>
                                 <th>Description</th>
                                 <th>Price</th>
                                 <th>Stocks</th>
@@ -28,6 +47,7 @@
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Category</th>
+                                <th>Registration Date</th>
                                 <th>Description</th>
                                 <th>Price</th>
                                 <th>Stocks</th>
@@ -35,46 +55,28 @@
                             </tr>
                         </tfoot>
                         <tbody>
+                           <?php
+                                if(is_array($prod_result)){
+                                    foreach($prod_result as $elem){
+                                    var_dump($elem);
+                                    echo
+                                        "
                             <tr>
-                                <td>https://media.gq-magazine.co.uk/photos/5f575108020908336ccd4d82/master/w_1000,c_limit/20200907-tshirt-05.jpg</td>
-                                <td>2</td>
-                                <td>T-shirt</td>
-                                <td>Shirts</td>
-                                <td>Hey there delilah</td>
-                                <td>PHP 3000</td>
-                                <td>3</td>
-                                <td><button class="btn btn-primary">Edit</button></td>
+                                <td><img src=".$elem["GoodsImage"]." style=\"width:10rem;\"></img></td>
+                                <td>".$elem["GoodsID"]."</td>
+                                <td>".$elem["GoodsName"]."</td>
+                                <td>".$elem["GoodsCategory"]."</td>
+                                <td>".$elem["RegDate"]."</td>
+                                <td>".$elem["GoodsDescription"]."</td>
+                                <td>".$elem["GoodsPrice"]."</td>
+                                <td>".$elem["Stocks"]."</td>
+                                <td><button class=\"btn btn-primary\">View</button></td>
                             </tr>
-                            <tr>
-                                <td>https://media.gq-magazine.co.uk/photos/5f575108020908336ccd4d82/master/w_1000,c_limit/20200907-tshirt-05.jpg</td>
-                                <td>2</td>
-                                <td>T-shirt</td>
-                                <td>Shirts</td>
-                                <td>Hey there delilah</td>
-                                <td>PHP 3000</td>
-                                <td>3</td>
-                                <td><button class="btn btn-primary">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>https://media.gq-magazine.co.uk/photos/5f575108020908336ccd4d82/master/w_1000,c_limit/20200907-tshirt-05.jpg</td>
-                                <td>2</td>
-                                <td>T-shirt</td>
-                                <td>Shirts</td>
-                                <td>Hey there delilah</td>
-                                <td>PHP 3000</td>
-                                <td>3</td>
-                                <td><button class="btn btn-primary">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>https://media.gq-magazine.co.uk/photos/5f575108020908336ccd4d82/master/w_1000,c_limit/20200907-tshirt-05.jpg</td>
-                                <td>2</td>
-                                <td>T-shirt</td>
-                                <td>Shirts</td>
-                                <td>Hey there delilah</td>
-                                <td>PHP 3000</td>
-                                <td>3</td>
-                                <td><button class="btn btn-primary">Edit</button></td>
-                            </tr>
+                                        ";
+                                    }
+                                }
+
+                            ?>
                         </tbody>
                     </table>
                 </div>
