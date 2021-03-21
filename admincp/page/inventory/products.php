@@ -58,7 +58,6 @@
                            <?php
                                 if(is_array($prod_result)){
                                     foreach($prod_result as $elem){
-                                    var_dump($elem);
                                     echo
                                         "
                             <tr>
