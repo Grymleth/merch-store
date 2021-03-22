@@ -11,8 +11,8 @@
                     $_POST["prodImg"],
                     $_POST["prodCategory"],
                     $_POST["prodDescription"],
-                    $_POST["prodPrice"],
-                    $_POST["prodStocks"]);
+                    $_POST["prodStocks"],
+                    $_POST["prodPrice"]);
 
                 # prevent leaks uwu
                 unset($inventory);

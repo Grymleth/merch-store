@@ -17,6 +17,11 @@
         else {
             $productInfo = $inventory->getProductInfo($productID);
         }
+
+        if(!is_array($productInfo)){
+            include(__ROOT_DIR__."page/404.php");
+            die();
+        }
         
         if(isset($_POST["confirmName"]) && isset($_POST["prodName"]))
             $prod_result = $inventory->changeName($productID, $_POST["prodName"]);
@@ -53,8 +58,6 @@
         <div class="text-center">
         <img class="mb-3 d-inline" src=<?php echo $productInfo["GoodsImage"]; ?> style="width:10rem;" alt=""><br>
         </div>
-        <h5>Product ID #<?php echo $productID; ?></h5>
-        <h5>Date Last Modified: <?php echo $productInfo["RegDate"]; ?></h5>
         <form method="post">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">

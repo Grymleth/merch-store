@@ -31,7 +31,6 @@
                         <thead>
                             <tr>
                                 <th>Image</th>
-                                <th>ID</th>
                                 <th>Name</th>
                                 <th>Category</th>
                                 <th>Registration Date</th>
@@ -44,7 +43,6 @@
                         <tfoot>
                             <tr>
                                 <th>Image</th>
-                                <th>ID</th>
                                 <th>Name</th>
                                 <th>Category</th>
                                 <th>Registration Date</th>
@@ -62,14 +60,13 @@
                                         "
                             <tr>
                                 <td><img src=".$elem["GoodsImage"]." style=\"width:10rem;\"></img></td>
-                                <td>".$elem["GoodsID"]."</td>
                                 <td>".$elem["GoodsName"]."</td>
                                 <td>".$elem["GoodsCategory"]."</td>
                                 <td>".$elem["RegDate"]."</td>
                                 <td>".$elem["GoodsDescription"]."</td>
                                 <td>".$elem["GoodsPrice"]."</td>
                                 <td>".$elem["Stocks"]."</td>
-                                <td><button class=\"btn btn-primary\">View</button></td>
+                                <td><a href=\"". __BASE_URL__ . "inventory/product/" . $elem["GoodsID"] ."\"class=\"btn btn-primary\">View</a></td>
                             </tr>
                                         ";
                                     }
