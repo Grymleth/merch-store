@@ -166,10 +166,12 @@ $arrAdminSideBar = array(
                                         $subpage = $sideBarItem[1];
                                     }
                                 }
-                                echo
-                                "
-                        <a class=\"collapse-item ". $isActive ."\" href=\"".  __BASE_URL__ . $adminSidebar[3] ."/".$sideBarItem[1] ."\">". $sideBarItem[2] ."</a>
-                                ";
+                                if(!("Product Info" == $sideBarItem[2] || "Transaction Info" == $sideBarItem[2])){
+                                    echo
+                                    "
+                            <a class=\"collapse-item ". $isActive ."\" href=\"".  __BASE_URL__ . $adminSidebar[3] ."/".$sideBarItem[1] ."\">". $sideBarItem[2] ."</a>
+                                    ";
+                                }
                             }                        
                     echo   
                         "</div>
