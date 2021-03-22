@@ -85,7 +85,6 @@ class ProductRoute{
             'email' => $_POST['email'],
             'address' => $_POST['address']
         ];
-        var_dump($_POST);
 
         // set userId to 0 if not registered
         $userId = isset($_SESSION['login']) ? $_SESSION['userId'] : 0;
@@ -110,7 +109,8 @@ class ProductRoute{
 
         $products->changeStock($data['goodsId'], $stock - $data['quantity']);
 
-        $this->renderProduct($data['goodsId']);
+        $_SESSION['orderSuccess'] = true;
+        header('location: '. __BASE_URL__ . 'products/'. $data['goodsId']);
     }
 
     public function getProductInfo($goodsid){

@@ -36,7 +36,7 @@
                         <h3 class="card-title"><?= $product['goodsname'] ?></h3>
                         <h4>₱<?= sprintf('%.2f', $product['goodsprice']) ?></h4>
                         <?php if($product['stocks'] > 0){ ?>
-                        <div class="text-success">In Stock</div>
+                        <div class="text-success"><?= $product['stocks'] ?> items in Stock</div>
                         <?php }else{ ?>
                         <div class="text-danger">Out of Stock</div>
                         <?php } ?>
@@ -46,9 +46,20 @@
 
                 <div class="container-fluid p-0 mt-4">
                     <form action="<?= __BASE_URL__ ?>products/checkout" method="POST">
+
+                        <?php if($product['stocks'] > 0){ ?>
                         <div class="btn-group mr-4">
                             <button type="submit" class="btn btn-success">Buy Now</button>
                         </div>
+                        
+                        <?php } else{?>
+                        <div class="btn-group mr-4" >
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#noStockModal"
+                            >Out of Stock</button>
+                        </div>
+                        
+                        <?php } ?>
+                        
 
                         <label for="quantityRange">Quantity</label>
                         <input type="number" name="quantity" class="" min="1" 
@@ -56,7 +67,6 @@
 
                         <input type="hidden" name="goodsid" value="<?= $product['goodsid'] ?>">
                     </form>
-                    
                 </div>
 
                 <!-- Checkout Modal -->
@@ -123,14 +133,14 @@
     <?php require "src/common/footer.php"; ?>
     <?php require "src/common/scripts.php"; ?>
 
-    <?php if($_SERVER['REQUEST_METHOD'] == 'POST'){ ?>
+    <?php if(isset($_SESSION['orderSuccess']) && $_SESSION['orderSuccess']){ ?>
     <script>
         $(document).ready(() => {
             console.log('hello world');
             $("#successModal").modal('show');
         });
     </script>
-    <?php } ?>
+    <?php $_SESSION['orderSuccess'] = false; } ?>
 </body>
 
 </html>
