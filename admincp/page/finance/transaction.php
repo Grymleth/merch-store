@@ -1,3 +1,20 @@
+<?php
+    $transaction_result = NULL;
+    try {
+        $transaction = new Transaction();
+
+        #registerAccount($strEmail, $strName, $strPass, $strCPass, $strAddress, $strContactNo, $bSex, $dateOfBirth)
+        $transaction_result = $transaction->getTransactionList();
+
+        # prevent leaks uwu
+        unset($transaction);
+
+    } catch (Exception $ex) {
+        die($ex);
+    }
+
+?>
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <h1 class="h3 mb-4 text-gray-800">Transaction Logs</h1>
@@ -39,42 +56,29 @@
                         </tr>
                     </tfoot>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Aevan Candelaria</td>
-                            <td>aevan.candelaria@gmail.com</td>
-                            <td>Creeper Hoodie</td>
-                            <td>Hoodies</td>
-                            <td>June 7, 1999</td>
-                            <td>69</td>
-                            <td>10,000</td>
-                            <td>Processing</td>
-                            <td><button class="btn btn-primary">Edit</button></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Dan Satparam</td>
-                            <td>dmsatparam@gmail.com</td>
-                            <td>Cat in Bread T-Shirt</td>
-                            <td>Shirt</td>
-                            <td>March 20, 2021</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>Packed</td>
-                            <td><button class="btn btn-primary">Edit</button></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>John Kenneth Andales</td>
-                            <td>jka@rai2.com</td>
-                            <td>T-shirt</td>
-                            <td>Shirt</td>
-                            <td>March 22, 2021</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>Shipped</td>
-                            <td><button class="btn btn-primary">Edit</button></td>
-                        </tr>
+                         <?php
+                                if(is_array($transaction_result)){
+                                    foreach($transaction_result as $elem){
+                                    var_dump($elem);
+                                    echo
+                                        "
+                            <tr>
+                            	<td>".$elem["TransactionID"]."</td>
+                                <td>".$elem["Name"]."</td>
+                                <td>".$elem["Email"]."</td>
+                                <td>".$elem["GoodsName"]."</td>
+                                <td>".$elem["GoodsCategory"]."</td>
+                                <td>".$elem["TransactionDate"]."</td>
+                                <td>".$elem["Quantity"]."</td>
+                                <td>".$elem["TotalPrice"]."</td>
+                                <td>".$elem["DeliveryDesc"]."</td>
+                                <td><button class=\"btn btn-primary\">View</button></td>
+                            </tr>
+                                        ";
+                                    }
+                                }
+
+                            ?>
                     </tbody>
                 </table>
             </div>
