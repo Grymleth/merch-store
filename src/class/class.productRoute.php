@@ -1,10 +1,8 @@
 <?php 
 
 class ProductRoute{
-    private $db;
     public function __construct($param = null){
         if($param != null){
-            $this->db = new Database('localhost', 'root', '', 'inventory');
 
             // handle POST request
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -30,7 +28,8 @@ class ProductRoute{
 
     public function renderProduct($param){
         // Get product from database
-        $result = $this->getProductInfo($param);
+        $inventory = new Inventory();
+        $result = $inventory->getProductInfo($param);
         // check if product exist
         if(!is_array($result)){
             new Error404();
@@ -38,11 +37,13 @@ class ProductRoute{
         }
         $product = $result;
 
-        $result = $this->db->query_fetch("SELECT goodscategory, goodscatname FROM goodscategoryinfo", array());
+        $result = $inventory->getCategoryList();
 
         $categories = $result;
         // determine which category the product is in
         $activeCategory = $categories[$product['goodscategory'] - 1]['goodscatname'];
+
+        unset($inventory);
 
         require_once "src/pages/product.php";
     }
@@ -53,8 +54,11 @@ class ProductRoute{
             'goodsid' => $_POST['goodsid'],
             'quantity' => $_POST['quantity']
         ];
+
+        $inventory = new Inventory();
+
         // get product
-        $product = $this->getProductInfo($data['goodsid']);
+        $product = $inventory->getProductInfo($data['goodsid']);
         
         // clamp max value to 10 or number of stocks left if less
         $max = $product['stocks'] < 10 ? $product['stocks'] : 10;
@@ -109,15 +113,13 @@ class ProductRoute{
 
         $products->changeStock($data['goodsId'], $stock - $data['quantity']);
 
+        unset($products);
+        unset($transactions);
+
         $_SESSION['orderSuccess'] = true;
         header('location: '. __BASE_URL__ . 'products/'. $data['goodsId']);
     }
 
-    public function getProductInfo($goodsid){
-        $result = $this->db->query_fetch_single("SELECT goodsid, goodsname, goodsprice, goodsimage, goodsdescription, goodscategory, stocks 
-        FROM goodslistinfo WHERE goodsid = ? ", array($goodsid));
-        if(is_array($result)) return $result;
-    }
 }
 
 ?>

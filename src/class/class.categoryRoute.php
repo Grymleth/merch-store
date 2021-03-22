@@ -5,8 +5,9 @@ class CategoryRoute{
         if($param != null){
             $conn = new Database('localhost', 'root', '', 'inventory');
 
+            $inventory = new Inventory();
 
-            $result = $conn->query_fetch("SELECT goodscatname FROM goodscategoryinfo WHERE goodscatname = ?", array($param));
+            $result = $inventory->getCategoryInfo($param);
 
             // check if category exists
             if(!is_array($result)){
@@ -15,10 +16,7 @@ class CategoryRoute{
             }
 
             // Get product from database
-            $result = $conn->query_fetch("SELECT g.goodsid, g.goodsimage, g.goodsname, g.goodsprice, g.goodsdescription, c.goodscatname, c.goodscategory
-                                          FROM goodslistinfo as g
-                                          INNER JOIN goodscategoryinfo as c
-                                          ON g.goodscategory = c.goodscategory AND c.goodscatname = ?", array($param));
+            $result = $inventory->getProductListFromCategory($param);
 
             // check if products exists in category
             // if(!is_array($result)){
@@ -26,10 +24,12 @@ class CategoryRoute{
             // }
 
             $products = $result != null ? $result : array();
-            $result = $conn->query_fetch("SELECT goodscatname FROM goodscategoryinfo", array());
+            $result = $inventory->getCategoryList();
             $categories = $result;
 
             $activeCategory = strtoupper($param);
+
+            unset($inventory);
 
             require_once "src/pages/category.php";
 

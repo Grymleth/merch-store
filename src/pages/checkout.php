@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Homepage</title>
+    <title>Checkout</title>
 
     <!-- Header -->
     <?php require "src/common/header.php"; ?>

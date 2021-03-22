@@ -62,7 +62,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Register</title>
+    <title>Profile</title>
 
     <!-- Header -->
     <?php require "src/common/header.php"; ?>

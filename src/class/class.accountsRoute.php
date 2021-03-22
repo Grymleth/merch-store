@@ -5,16 +5,31 @@ class AccountsRoute{
         $this->db = new Database(DB_HOST, DB_ACCOUNT_USER, DB_INVENTORY_PASS, DB_ACCOUNT_NAME);
         switch($param){
             case 'login':
+                if(isset($_SESSION['login'])){
+                    new Error404();
+                    break;
+                }
                 $this->login();
                 break;
             case 'logout':
                 $this->logout();
                 break;
             case 'register':
+                if(isset($_SESSION['login'])){
+                    new Error404();
+                    break;
+                }
                 $this->register();
                 break;
             case 'profile':
+                if(!isset($_SESSION['login'])){
+                    new Error404();
+                    break;
+                }
                 $this->profile();
+                break;
+            case 'transactions':
+                $this->transactions();
                 break;
             default:
                 new Error404();
@@ -159,6 +174,10 @@ class AccountsRoute{
 
     public function profile(){
         require_once "src/pages/profile.php";
+    }
+
+    public function transactions(){
+        require_once "src/pages/transactions.php";
     }
 
     public function findUserByEmail($email){
