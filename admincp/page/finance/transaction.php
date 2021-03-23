@@ -59,7 +59,6 @@
                          <?php
                                 if(is_array($transaction_result)){
                                     foreach($transaction_result as $elem){
-                                    var_dump($elem);
                                     echo
                                         "
                             <tr>
@@ -67,7 +66,7 @@
                                 <td>".$elem["Name"]."</td>
                                 <td>".$elem["Email"]."</td>
                                 <td>".$elem["GoodsName"]."</td>
-                                <td>".$elem["GoodsCategory"]."</td>
+                                <td>".$elem["GoodsCatName"]."</td>
                                 <td>".$elem["TransactionDate"]."</td>
                                 <td>".$elem["Quantity"]."</td>
                                 <td>".$elem["TotalPrice"]."</td>
