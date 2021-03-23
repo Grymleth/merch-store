@@ -61,7 +61,7 @@
                             <tr>
                                 <td><img src=".$elem["GoodsImage"]." style=\"width:10rem;\"></img></td>
                                 <td>".$elem["GoodsName"]."</td>
-                                <td>".$elem["GoodsCategory"]."</td>
+                                <td>".$elem["GoodsCatName"]."</td>
                                 <td>".$elem["RegDate"]."</td>
                                 <td>".$elem["GoodsDescription"]."</td>
                                 <td>".$elem["GoodsPrice"]."</td>

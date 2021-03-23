@@ -40,7 +40,7 @@
         }
 
         public function getProductList(){
-            $result = $this->inventoryDB->query_fetch("SELECT * FROM goodslistinfo");
+            $result = $this->inventoryDB->query_fetch("SELECT goodslistinfo.GoodsImage, goodslistinfo.GoodsID, goodslistinfo.GoodsName, goodscategoryinfo.GoodsCatName, goodslistinfo.RegDate, goodslistinfo.GoodsDescription, goodslistinfo.GoodsPrice, goodslistinfo.Stocks FROM goodslistinfo INNER JOIN goodscategoryinfo ON goodslistinfo.GoodsCategory = goodscategoryinfo.GoodsCategory");
             if(is_array($result)) return $result;
         }
 
