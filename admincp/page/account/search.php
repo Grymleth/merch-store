@@ -70,7 +70,7 @@
                                 <td>".$strSex."</td>
                                 <td>".$strRole."</td>
                                 <td>".$elem["RegDate"]."</td>
-                                <td><a href=\"". __BASE_URL__ . "account/info/" .$elem["AccountID"]."\"class=\"btn btn-primary\">Edit</a></td>
+                                <td><a href=\"". __BASE_URL__ . "account/info/" .$elem["AccountID"]."\"class=\"btn btn-primary\">View</a></td>
                             </tr>
                                         ";
                                     }
