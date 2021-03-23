@@ -32,11 +32,11 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                                 <?php 
-                                if(isset($error)){
-                                    if(count($error) > 0){
-                                        echo "<div class=\"alert alert-danger\">". $error[0]. " </div>";
+                                if(isset($reg_result)){
+                                    if($reg_result != ''){
+                                        echo "<div class=\"alert alert-danger\">". $reg_result. " </div>";
                                     }
-                                    else{
+                                    else if($reg_result != '_'){
                                         echo "<div class=\"alert alert-success\">You have successfully registered! Click <a href=\"" . __BASE_URL__ . "accounts/login\">here</a> to login.</div>";
                                     }
                                 }

@@ -69,7 +69,9 @@ class AccountsRoute{
     }
 
     public function register(){
+        
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $reg_result = "_";
             $data = [
                 'email' => trim($_POST['email']),
                 'name' => trim($_POST['firstName']) . ' ' . trim($_POST['lastName']),
@@ -81,91 +83,18 @@ class AccountsRoute{
                 'repeatPassword' => trim($_POST['repeatPassword']),
             ];
 
-            $error = [];
+            $account = new Account();
 
-            // validate name
-            if(empty($_POST['firstName'])){
-                array_push($error, 'Please enter first name.');
-            }
-
-            if(empty($_POST['lastName'])){
-                array_push($error, 'Please enter last name.');
-            }
-
-            // Validate username on letters/numbers
-            if(empty($data['email'])){
-                array_push($error, 'Please enter email address.');
-            }
-            else if(!filter_var($data['email'], FILTER_VALIDATE_EMAIL)){
-                array_push($error, 'Please enter a valid email.');
-            }
-            else{
-                // check if email exists
-                if($this->findUserByEmail($data['email'])){
-                    array_push($error, 'Email is already taken.');
-                }
-            }
-
-            $passwordValidation = "/.*[0-9].*/i";
-            $contactValidation = "/^[0-9]*$/";
-
-            // validate password on length and numeric values
-            if(empty($data['password'])){
-                array_push($error, 'Please enter password.');
-            }
-            else if(strlen($data['password']) <= 8 || strlen($data['password']) >= 32){
-                array_push($error, 'Password length must be greater than 8 but less than 32.');
-            }
-            else if(!preg_match($passwordValidation, $data['password'])){
-                echo $data['password'];
-                array_push($error, 'Password must have at least 1 numeric value.');
-            }
-
-            // Validate repeat password
-            if(empty($data['repeatPassword'])){
-                $data['repeatPassword'] = 'Please confirm password.';
-            }
-            else {
-                if($data['password'] != $data['repeatPassword']){
-                    array_push($error, 'Passwords do not match, please try again');
-                }
-            }
-
-            //validate birthday and if legal
-            if(empty($data['birthdate'])){
-                array_push($error, 'Please enter date of birth.');
-            }
-            else{
-                if(!$this->isLegalDate($data['birthdate'])){
-                    array_push($error, 'Must be 13+ years old.');
-                }
-            }
-
-            // validate address
-            if(empty($data['address'])){
-                array_push($error, 'Please enter address.');
-            }
-
-            // validate sex
-            if(!($data['sex'] == '0' || $data['sex'] == '1')){
-                array_push($error, 'Please select valid sex.');
-            }
-
-            // Validate contact number
-            if(empty($data['contactno'])){
-                array_push($error, 'Please enter contact number');
-            }
-            else if(!preg_match($contactValidation, $data['contactno'])){
-                array_push($error, 'Please enter valid contact number');
-            }
-
-            // make sure that errors are empty
-            if(count($error) == 0){
-
-                // Hash password
-                $data['password'] = hash('SHA512', $data['email'] . $data['password']);
-                $this->registerUser($data);
-            }
+            $reg_result = $account->registerAccount(
+                $_POST['email'],
+                $_POST['firstName'] . " " . $_POST['lastName'],
+                $_POST['password'],
+                $_POST['repeatPassword'],
+                $_POST['address'],
+                $_POST['contactno'],
+                $_POST['sex'],
+                $_POST['birthdate'],
+            );
         }
 
         require_once "src/pages/register.php";

@@ -46,7 +46,7 @@
                                 <h4 class="card-title">
                                     <a href="/merch-store/products/<?= $product['goodsid'] ?>"><?= $product['goodsname'] ?></a>
                                 </h4>
-                                <h5>₱<?= sprintf('%.2f', $product['goodsprice']) ?></h5>
+                                <h5>₱<?= number_format($product['goodsprice'], 2) ?></h5>
                                 <p class="card-text"><?= $product['goodsdescription'] ?></p>
                             </div>
 

@@ -34,7 +34,7 @@
                     <img class="card-img-top img-fluid" src="<?= $product['goodsimage'] ?>" alt="">
                     <div class="card-body">
                         <h3 class="card-title"><?= $product['goodsname'] ?></h3>
-                        <h4>₱<?= sprintf('%.2f', $product['goodsprice']) ?></h4>
+                        <h4>₱<?= number_format($product['goodsprice'], 2) ?></h4>
                         <?php if($product['stocks'] > 0){ ?>
                         <div class="text-success"><?= $product['stocks'] ?> items in Stock</div>
                         <?php }else{ ?>
