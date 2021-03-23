@@ -78,3 +78,7 @@ pagination = () => {
 if($('.product').length > 0){
     pagination();
 }
+if($('#dataTable').length){
+    console.log('hello world');
+    $('#dataTable').DataTable();
+}

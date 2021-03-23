@@ -13,3 +13,5 @@
 <!-- Custom styles for this template -->
 <!-- <link href="../css/index.css" rel="stylesheet"> -->
 <link href="<?= __BASE_URL__ ?>css/index.css" rel="stylesheet">
+
+<link href="<?= __BASE_URL__ ?>js/datatables/dataTables.bootstrap4.css" rel="stylesheet">
