@@ -71,7 +71,7 @@
                                 <td>".$elem["Quantity"]."</td>
                                 <td>".$elem["TotalPrice"]."</td>
                                 <td>".$elem["DeliveryDesc"]."</td>
-                                <td><button class=\"btn btn-primary\">View</button></td>
+                                <td><a href=\"". __BASE_URL__ . "finance/trinfo/" .$elem["TransactionID"]."\"class=\"btn btn-primary\">View</a></td>
                             </tr>
                                         ";
                                     }
