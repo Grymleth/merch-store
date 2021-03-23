@@ -25,6 +25,21 @@ class Transaction{
         }
         if(is_array($result)) return $result;
     }
+
+    public function getTransactionCountByCategory($goodsCatName){
+        $result = $this->transactionDB->query_fetch_single("SELECT SUM(Quantity) as Quantity FROM transactionlistinfo WHERE GoodsCatName = ?", array($goodsCatName));
+        if(is_array($result)) return $result;
+    }
+
+    public function getTransactionTotalPriceByMonthYear($month, $year){
+        $result = $this->transactionDB->query_fetch_single("SELECT SUM(TotalPrice) as TotalPrice FROM transactionlistinfo WHERE MONTH(transactiondate) = ? AND YEAR(transactiondate) = ?", array($month, $year));
+        if(is_array($result)) return $result;
+    }
+
+    public function getTransactionTotalPriceByYear($year){
+        $result = $this->transactionDB->query_fetch_single("SELECT SUM(TotalPrice) as TotalPrice FROM transactionlistinfo WHERE YEAR(transactiondate) = ?", array($year));
+        if(is_array($result)) return $result;
+    }
 }
 
 

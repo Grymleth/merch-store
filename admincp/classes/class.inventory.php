@@ -48,5 +48,10 @@
             $result = $this->inventoryDB->query_fetch_single("SELECT * FROM goodslistinfo WHERE goodslistinfo.GoodsID = ?", $productid);
             if(is_array($result)) return $result;
         }
+
+        public function getCategoryList(){
+            $result = $this->inventoryDB->query_fetch("SELECT GoodsCatName, GoodsCategory FROM goodscategoryinfo", array());
+            if(is_array($result)) return $result;
+        }
     }
 ?>
