@@ -32,7 +32,7 @@
                         </h4>
                         <ul class="list-group mb-3">
                             <li class="list-group-item d-flex justify-content-between lh-condensed">
-                                <div>
+                                <div class="text-truncate">
                                     <h6 class="my-0"><?= $product['goodsname'] . ' x ' . $data['quantity'] ?> </h6>
                                     <small class="text-muted"><?= $product['goodsdescription'] ?></small>
                                 </div>
