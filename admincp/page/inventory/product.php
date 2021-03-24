@@ -52,8 +52,11 @@
         <h1 class="h3 mb-4 text-gray-800">Product Info</h1>
         <!-- Feedback alert -->
         <?php
-            if($prod_result == "")
+            if($prod_result == ""){
                 echo "<div class=\"alert alert-success\">Succesfully changed!</div>";
+            } else if ($prod_result != "_"){
+                echo "<div class=\"alert alert-danger\">".$prod_result."</div>";
+            }
         ?>
         <div class="text-center">
         <img class="mb-3 d-inline" src=<?php echo $productInfo["GoodsImage"]; ?> style="width:10rem;" alt=""><br>
@@ -151,7 +154,7 @@
                 </div>
                 <?php
                     echo "
-                <input type=\"number\" class=\"form-control\" placeholder=\"Product Price\" name=\"prodPrice\" value=\"".$productInfo["GoodsPrice"]."\" min=\"0\" style=\"-webkit-appearance:none; -moz-appearance: textfield;\"";
+                <input type=\"text\" class=\"form-control\" placeholder=\"Product Price\" name=\"prodPrice\" value=\"".$productInfo["GoodsPrice"]."\" min=\"0\" style=\"-webkit-appearance:none; -moz-appearance: textfield;\"";
                     if(isset($_POST["editPrice"])){
                         echo " 
                 required>

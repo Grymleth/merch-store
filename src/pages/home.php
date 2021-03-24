@@ -63,10 +63,10 @@
                     <?php foreach($products as $product){ ?>
                     <div class="product col-lg-4 col-md-6 mb-4">
                         <div class="card h-100" >
-                            <a href="#"><img class="card-img-top" style="width:15.8rem;" src="<?= $product['goodsimage'] ?>" alt=""></a>
+                            <a href="<?= __BASE_URL__ ?>products/<?= $product['goodsid'] ?>"><img class="card-img-top" style="width:15.8rem;" src="<?= $product['goodsimage'] ?>" alt=""></a>
                             <div class="card-body">
                                 <h4 class="card-title">
-                                    <a href="/merch-store/products/<?= $product['goodsid'] ?>"><?= $product['goodsname'] ?></a>
+                                    <a href="<?= __BASE_URL__ ?>products/<?= $product['goodsid'] ?>"><?= $product['goodsname'] ?></a>
                                 </h4>
                                 <h5>₱<?= number_format($product['goodsprice'], 2) ?></h5>
                                 <p class="card-text text-truncate"><?= $product['goodsdescription'] ?></p>

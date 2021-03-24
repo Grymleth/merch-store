@@ -39,24 +39,23 @@ class AccountsRoute{
 
     public function login(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            $data = [
-                'email' => $_POST['email'],
-                'password' => $_POST['password'],
-                'error' => ''
-            ];
             // hash password
-            $data['password'] = hash('SHA512', $data['email'] . $data['password']);
+            // $data['password'] = hash('SHA512', $data['email'] . $data['password']);
 
-            $result = $this->db->query_fetch_single('SELECT accountid, email, pass, name FROM users WHERE email = ? AND pass = ?', array($data['email'], $data['password']));
-            if($result){
-                // redirect to home page
-                $_SESSION['login'] = true;
-                $_SESSION['userId'] = $result['accountid'];
-                header('location: '. __BASE_URL__ . 'home');
-            }
-            else{
-                $data['error'] = 'Invalid email or password.';
-            }
+            $account = new Account();
+
+            $result = $account->loginAccount($_POST['email'], $_POST['password']);
+
+            // $result = $this->db->query_fetch_single('SELECT accountid, email, pass, name FROM users WHERE email = ? AND pass = ?', array($data['email'], $data['password']));
+            // if($result){
+            //     // redirect to home page
+            //     $_SESSION['login'] = true;
+            //     $_SESSION['userId'] = $result['accountid'];
+            //     header('location: '. __BASE_URL__ . 'home');
+            // }
+            // else{
+            //     $data['error'] = 'Invalid email or password.';
+            // }
         }
         
         require_once "src/pages/login.php";

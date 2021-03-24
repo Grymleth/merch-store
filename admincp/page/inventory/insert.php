@@ -5,7 +5,6 @@
             try {
                 $inventory = new Inventory();
 
-                #registerAccount($strEmail, $strName, $strPass, $strCPass, $strAddress, $strContactNo, $bSex, $dateOfBirth)
                 $addProd_result = $inventory->addProduct(
                     $_POST["prodName"],
                     $_POST["prodImg"],
@@ -32,6 +31,14 @@
         <!-- Page Heading -->
         <h1 class="h3 mb-4 text-gray-800">Add Product</h1>
         <form method="post">
+
+            <?php
+                if($addProd_result == ""){
+                    echo "<div class=\"alert alert-success\">Successfully Registered!</div>";
+                } else if ($addProd_result != "_"){
+                    echo "<div class=\"alert alert-danger\">".$addProd_result."</div>";
+                }
+            ?>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text">Product Image</span>
@@ -67,7 +74,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">Product Price</span>
                 </div> 
-                <input type="number" class="form-control" placeholder="Price in Peso" name="prodPrice" style="-webkit-appearance:none; -moz-appearance: textfield;">
+                <input type="text" class="form-control" placeholder="Price in Peso" name="prodPrice" style="-webkit-appearance:none; -moz-appearance: textfield;">
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">

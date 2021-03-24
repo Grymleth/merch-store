@@ -114,7 +114,7 @@
         </div>
     </div>
 
-    <td><a href="http://localhost/merch-store/category/MISCELLANEOUS"></a></td>
+    <td><a href="<?= __BASE_URL__ ?>category/MISCELLANEOUS"></a></td>
 
     <?php require "src/common/scripts.php"; ?>
 

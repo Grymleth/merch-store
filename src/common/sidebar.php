@@ -4,7 +4,7 @@
 
     <div class="list-group">
         <?php foreach($categories as $category){ ?>
-        <a href="/merch-store/category/<?= strtolower($category['goodscatname']) ?>" class="list-group-item
+        <a href="<?= __BASE_URL__ ?>category/<?= strtolower($category['goodscatname']) ?>" class="list-group-item
         <?= $category['goodscatname'] == $activeCategory ? 'active' : '' ?>"><?= str_replace('_', ' ', $category['goodscatname']) ?></a>
         <?php } ?>
     </div>

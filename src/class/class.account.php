@@ -25,8 +25,23 @@ class Account{
         return ""; 
     }
 
-    public function validateAccount(){
+    public function loginAccount($strEmail, $strPass, $isRemember = false /* Todo if still have time lols */){
+        if(!empty($ret = Common::validateEmail($strEmail))) return $ret;
 
+        $hash_pass =  hash("sha512", $strEmail.$strPass);
+        $result = $this->accountDB->query_fetch_single("SELECT AccountID FROM users WHERE Email = ? AND Pass = ?", array($strEmail, $hash_pass));
+        if(!is_array($result)) return "Login Failed";
+
+        $accountInfo = $this->getAccountInfo(intval($result["AccountID"]));
+        if(!is_array($accountInfo)) return "System Error! Contact Administrator";
+        if(Common::getRoleName(intval($accountInfo["RoleID"])) == "BANNED_USER")
+            return "This account is banned from this website.";
+
+        $_SESSION['login'] = true;
+        $_SESSION['userId'] = $result['AccountID'];
+
+        header("Location: " . __BASE_URL__ . "home");
+        die();
     }
     
     public function changePassword($accountID, $strPass, $strCPass, $isAdmin = false, $strCurrPass = ""){

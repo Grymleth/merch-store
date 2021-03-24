@@ -16,7 +16,7 @@
         <i class="fa fa-bars"></i>
     </button>
 
-    <a href="/merch-store/" class="brand nav-link">
+    <a href="<?= __BASE_URL__ ?>" class="brand nav-link">
         <div class="logo"><i class="fas fa-laugh-wink rotate-n-15"></i></div>
         <span>EBAN <sup>MERCH</sup></span>
     </a>
@@ -37,27 +37,6 @@
 
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
-
-        <!-- Nav Item - About -->
-        <li class="nav-item dropdown no-arrow mx-1">
-            <a class="nav-link dropdown-toggle" href="<?= __BASE_URL__ ?>about">
-                <span>About</span>
-            </a>
-        </li>
-
-        <!-- Nav Item - Services -->
-        <li class="nav-item dropdown no-arrow mx-1">
-            <a class="nav-link dropdown-toggle" href="<?= __BASE_URL__ ?>services">
-                <span>Services</span>
-            </a>
-        </li>
-
-        <!-- Nav Item - Contact -->
-        <li class="nav-item dropdown no-arrow mx-1">
-            <a class="nav-link dropdown-toggle" href="<?= __BASE_URL__ ?>contact">
-                <span>Contact</span>
-            </a>
-        </li>
 
         <div class="topbar-divider d-none d-sm-block"></div>
 

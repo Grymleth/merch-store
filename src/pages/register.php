@@ -100,7 +100,7 @@
                             </form>
                             <hr>
                             <div class="text-center">
-                                <a class="small" href="/merch-store/accounts/login">Already have an account? Login!</a>
+                                <a class="small" href="<?= __BASE_URL__ ?>accounts/login">Already have an account? Login!</a>
                             </div>
                         </div>
                     </div>

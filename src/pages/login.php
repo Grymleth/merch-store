@@ -47,7 +47,7 @@
                                         </div>
                                         <div class="form-group">
                                         </div>
-                                        <?= isset($data) ? "<div class=\"alert alert-danger\">" . $data['error'] ."</div>" : '' ?>
+                                        <?= isset($result) ? "<div class=\"alert alert-danger\">" . $result ."</div>" : '' ?>
                                         <button type="submit" value="submit" name="submit" class= "btn btn-primary btn-user btn-block">
                                             Login
                                         </button>
