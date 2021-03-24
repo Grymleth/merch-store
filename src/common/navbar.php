@@ -11,11 +11,6 @@
 
 <!-- Topbar -->
 <nav class="navbar navbar-expand navbar-light bg-gradient-primary topbar mb-4 static-top shadow">
-    <!-- Sidebar Toggle (Topbar) -->
-    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-        <i class="fa fa-bars"></i>
-    </button>
-
     <a href="<?= __BASE_URL__ ?>" class="brand nav-link">
         <div class="logo"><i class="fas fa-laugh-wink rotate-n-15"></i></div>
         <span>EBAN <sup>MERCH</sup></span>
