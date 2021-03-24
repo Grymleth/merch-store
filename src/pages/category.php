@@ -31,7 +31,6 @@
 
                 <div class="row my-4">
                     <?php if($products == []){ ?>
-
                     <div class="container my-4" id="loop">
                         <h3>No products available</h3>
                     </div>

@@ -29,6 +29,11 @@
 
             <div class="col-lg-9">
 
+                <?php if($products == []){ ?>
+                <div class="container my-4" id="loop">
+                    <h3>No products available</h3>
+                </div>
+                <?php } else{?>
                 <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
                     <ol class="carousel-indicators">
                         
@@ -79,7 +84,7 @@
                         </div>
                     </div>
                     
-                    <?php } ?>
+                    <?php }} ?>
                 </div>
 
                 <!-- /.row -->
