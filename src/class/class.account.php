@@ -29,7 +29,7 @@ class Account{
         if(!empty($ret = Common::validateEmail($strEmail))) return $ret;
 
         $hash_pass =  hash("sha512", $strEmail.$strPass);
-        $result = $this->accountDB->query_fetch_single("SELECT AccountID FROM users WHERE Email = ? AND Pass = ?", array($strEmail, $hash_pass));
+        $result = $this->accountDB->query_fetch_single("SELECT users.AccountID, roleinfo.RoleID FROM users INNER JOIN roleinfo ON users.AccountID = roleinfo.AccountID WHERE Email = ? AND Pass = ?", array($strEmail, $hash_pass));
         if(!is_array($result)) return "Login Failed";
 
         $accountInfo = $this->getAccountInfo(intval($result["AccountID"]));
@@ -39,8 +39,15 @@ class Account{
 
         $_SESSION['login'] = true;
         $_SESSION['userId'] = $result['AccountID'];
+        $_SESSION['roleId'] = $result['RoleID'];
 
         header("Location: " . __BASE_URL__ . "home");
+        die();
+    }
+
+    public function logoutAccount(){
+        session_unset();
+        header("Location: ".__BASE_URL__);
         die();
     }
     
@@ -165,6 +172,11 @@ class Account{
 
     public function getAccountList(){
         $result = $this->accountDB->query_fetch("SELECT users.*, roleinfo.RoleID FROM users INNER JOIN roleinfo ON users.AccountID = roleinfo.AccountID;");
+        if(is_array($result)) return $result;
+    }
+
+    public function getUserRole($uid){
+        $result = $this->accountDB->query_fetch_single("SELECT RoleID FROM roleinfo WHERE AccountID = ?", array($uid));
         if(is_array($result)) return $result;
     }
 

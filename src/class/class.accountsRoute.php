@@ -1,8 +1,6 @@
 <?php 
 class AccountsRoute{
-    private $db;
     public function __construct($param = null){
-        $this->db = new Database(DB_HOST, DB_ACCOUNT_USER, DB_INVENTORY_PASS, DB_ACCOUNT_NAME);
         switch($param){
             case 'login':
                 if(isset($_SESSION['login'])){
@@ -63,8 +61,9 @@ class AccountsRoute{
     }
 
     public function logout(){
-        session_unset();
-        header('location: '. __BASE_URL__);
+        $account = new Account();
+        $account->logoutAccount();
+        unset($account);
     }
 
     public function register(){

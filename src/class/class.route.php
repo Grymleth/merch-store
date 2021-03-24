@@ -37,7 +37,15 @@ class Route{
      */
 
     public function submit(){
-        // the uri requested
+        // check if account role has changed
+        if(isset($_SESSION['login'])){
+            $account = new Account();
+            $roleID = intval($account->getUserRole($_SESSION['userId'])['RoleID']);
+            if(intval($_SESSION['roleId']) != $roleID){
+                $account->logoutAccount();
+            }
+        }
+        
         $uriGet = isset($_GET['page']) ? $_GET['page'] : '';
 
         $methodGet = '/' . $uriGet;

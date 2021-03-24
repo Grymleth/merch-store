@@ -40,7 +40,7 @@
                             </li>
                             <li class="list-group-item d-flex justify-content-between">
                                 <span>Total (PHP)</span>
-                                <strong><?= sprintf('₱%.2f', $product['goodsprice'] * $data['quantity']) ?></strong>
+                                <strong>₱<?= number_format($product['goodsprice'] * $data['quantity']) ?></strong>
                             </li>
                         </ul>
                     </div>
