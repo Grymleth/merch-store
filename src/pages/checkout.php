@@ -36,7 +36,7 @@
                                     <h6 class="my-0"><?= $product['goodsname'] . ' x ' . $data['quantity'] ?> </h6>
                                     <small class="text-muted"><?= $product['goodsdescription'] ?></small>
                                 </div>
-                                <span class="text-muted"><?= sprintf('₱%.2f', $product['goodsprice']) ?></span>
+                                <span class="text-muted">₱<?= number_format($product['goodsprice']) ?></span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between">
                                 <span>Total (PHP)</span>
