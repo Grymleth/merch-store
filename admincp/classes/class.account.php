@@ -41,7 +41,7 @@ class Account{
         $session->accountID = $accountInfo["AccountID"];
         $session->roleID = $accountInfo["RoleID"];
 
-        header("Location: home");
+        header("Location: dashboard/home");
         die();
     }
 
