@@ -47,9 +47,10 @@ class Account{
 
     public function logoutAccount(){
         $session = Session::getInstance();
-        $session->destroy();
-        header("Location: ".__BASE_URL__);
-        die();
+        if($session->destroy()){
+			header("Location: ".__BASE_URL__);
+			die();
+		}
     }
     
     public function changePassword($accountID, $strPass, $strCPass, $isAdmin = false, $strCurrPass = ""){

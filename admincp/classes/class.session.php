@@ -51,6 +51,7 @@ class Session
         if ( $this->sessionState == self::SESSION_NOT_STARTED )
         {
             $this->sessionState = session_start();
+			session_regenerate_id(true);
         }
        
         return $this->sessionState;
