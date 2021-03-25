@@ -106,8 +106,7 @@
                     echo "
                 <select class=\"form-control\" name=\"prodCategory\" value=\"".$productInfo["GoodsCategory"]."\"";
                     if(isset($_POST["editCategory"])){
-                        echo " 
-                disabled=\"false\">
+                        echo ">
                     <option value=\"1\">Hats</option>
                     <option value=\"2\">Hoodies</option>
                     <option value=\"3\">Jackets</option>
@@ -115,7 +114,7 @@
                     <option value=\"5\">Shirts</option>
                     <option value=\"6\">Miscellaneous</option>
                 </select>
-                <button class=\"btn btn-primary ml-4\" type=\"confirmCategory\">Confirm</button>";
+                <button class=\"btn btn-primary ml-4\" type=\"submit\" name=\"confirmCategory\">Confirm</button>";
                     } else {
                         echo " 
                 disabled=\"true\">
@@ -126,7 +125,7 @@
                     <option value=\"5\"";if($productInfo["GoodsCategory"] == 5){echo "selected";} echo ">Shirts</option>
                     <option value=\"6\"";if($productInfo["GoodsCategory"] == 6){echo "selected";} echo ">Miscellaneous</option>
                 </select>
-                <button class=\"btn btn-primary ml-4\" type=\"editCategory\">Edit</button>";
+                <button class=\"btn btn-primary ml-4\" type=\"submit\" name=\"editCategory\">Edit</button>";
                     }
                 ?>
             </div>
