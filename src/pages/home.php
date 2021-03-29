@@ -96,7 +96,79 @@
                     </ul>
                 </nav>
             </div>
-
+            <!-- Checkout Success Modal -->
+            <div class="modal fade show" id="trackInfoModal" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title">Track Order</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <?php if(empty($errorMsg)){ ?>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Transaction ID</span>
+                                </div>
+                                <input type="text" class="form-control" value="<?= $result['TransactionID'] ?>" readonly>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Name</span>
+                                </div>
+                                <input type="text" class="form-control" value="<?= $result['Name'] ?>" readonly>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Email</span>
+                                </div>
+                                <input type="text" class="form-control" value="<?= $result['Email'] ?>" readonly>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Address</span>
+                                </div>
+                                <input type="text" class="form-control" value="<?= $address?>" readonly>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Product Name</span>
+                                </div>
+                                <input type="text" class="form-control" value="<?= $result['GoodsName'] ?>" readonly>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Product Category</span>
+                                </div>
+                                <input type="text" class="form-control" value="<?= $result['GoodsCategory'] ?>" readonly>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Quantity</span>
+                                </div>
+                                <input type="text" class="form-control" value="<?= $result['Quantity'] ?>" readonly>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Total Price</span>
+                                </div>
+                                <input type="text" class="form-control" value="<?= $result['TotalPrice'] ?>" readonly>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Delivery Status</span>
+                                </div>
+                                <input type="text" class="form-control" value="<?= Common::getDeliveryStatus($result['DeliveryCode']) ?>" readonly>
+                            </div>
+                            <?php } else{ ?>
+                            <div class="alert alert-danger"><?= $errorMsg[0] ?></div>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
             <!-- /.col-lg-9 -->
 
@@ -108,6 +180,14 @@
 
     <?php require "src/common/footer.php"; ?>
     <?php require "src/common/scripts.php"; ?>
+    <?php if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['trackNumber'])){ ?>
+    <script>
+        $(document).ready(() => {
+            console.log('hello world');
+            $("#trackInfoModal").modal('show');
+        });
+    </script>
+    <?php } ?>
 </body>
 
 </html>

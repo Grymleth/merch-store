@@ -68,7 +68,7 @@
 
         <?php }} else{ ?>
             <li class="nav-item dropdown no-arrow mx-1">
-                <a class="nav-link dropdown-toggle" href="<?= __BASE_URL__ ?>trackorder">
+                <a class="nav-link dropdown-toggle" data-toggle="modal" data-target="#trackModal" href="#">
                     <span>Track Order</span>
                 </a>
             </li>
@@ -114,11 +114,16 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Enter your transaction number below.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="<?= __BASE_URL__ ?>accounts/logout/">Logout</a>
-                </div>
+                <form action="<?= __BASE_URL__ ?>" method="POST">
+                    <div class="modal-body">
+                        <label for="trackingNumber">Enter your tracking number below: </label>
+                        <input type="text" class="form-control" placeholder="12345" name="trackNumber" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

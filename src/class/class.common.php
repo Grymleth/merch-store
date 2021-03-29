@@ -88,6 +88,29 @@ class Common {
 		}
 	}
 
+    public static function getDeliveryStatus($value){
+		/*
+			// USER ROLE
+			define("BANNED_USER", -1);
+			define("NORMAL_USER", 0);
+			define("INVENTORY_USER", 1);
+			define("FINANCIAL_USER", 2);
+			define("ADMIN_USER", 3);
+		*/
+		switch($value){
+			case 1:
+				return "PROCESSING";
+			case 2:
+				return "PACKED";
+			case 3:
+				return "SHIPPED";
+			case 4:
+				return "DELIVERED";
+            default:
+                return "this cannot be";
+		}
+	}
+
 	public static function validatePassword($strPass, $strCPass){
 		if( 
             !self::checkValue($strPass) ||
