@@ -68,6 +68,11 @@
 
         <?php }} else{ ?>
             <li class="nav-item dropdown no-arrow mx-1">
+                <a class="nav-link dropdown-toggle" href="<?= __BASE_URL__ ?>trackorder">
+                    <span>Track Order</span>
+                </a>
+            </li>
+            <li class="nav-item dropdown no-arrow mx-1">
                 <a class="nav-link dropdown-toggle" href="<?= __BASE_URL__ ?>accounts/login">
                     <span>Login</span>
                 </a>
