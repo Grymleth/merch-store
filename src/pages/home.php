@@ -142,7 +142,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Product Category</span>
                                 </div>
-                                <input type="text" class="form-control" value="<?= $result['GoodsCategory'] ?>" readonly>
+                                <input type="text" class="form-control" value="<?= Common::getProductCategoryName($result['GoodsCategory']) ?>" readonly>
                             </div>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">

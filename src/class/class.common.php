@@ -89,14 +89,6 @@ class Common {
 	}
 
     public static function getDeliveryStatus($value){
-		/*
-			// USER ROLE
-			define("BANNED_USER", -1);
-			define("NORMAL_USER", 0);
-			define("INVENTORY_USER", 1);
-			define("FINANCIAL_USER", 2);
-			define("ADMIN_USER", 3);
-		*/
 		switch($value){
 			case 1:
 				return "PROCESSING";
@@ -106,6 +98,25 @@ class Common {
 				return "SHIPPED";
 			case 4:
 				return "DELIVERED";
+            default:
+                return "this cannot be";
+		}
+	}
+
+    public static function getProductCategoryName($value){
+		switch($value){
+			case 1:
+				return "Hats";
+			case 2:
+				return "Hoodies";
+			case 3:
+				return "Jackets";
+			case 4:
+				return "Long Sleeves";
+            case 5:
+                return "Shirts";
+            case 6:
+                return "Miscellaneous";
             default:
                 return "this cannot be";
 		}
