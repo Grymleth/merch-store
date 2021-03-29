@@ -115,7 +115,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <div class="alert alert-success">Purchase Complete</div>
+                                <div class="alert alert-success">Purchase Complete: The Transaction ID is <?= isset($_SESSION['transactionID']) ? $_SESSION['transactionID'] : '' ?></div>
                             </div>
                         </div>
                     </div>

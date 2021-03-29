@@ -113,10 +113,13 @@ class ProductRoute{
 
         $products->changeStock($data['goodsId'], $stock - $data['quantity']);
 
+        $transactionID = $transactions->getLatestTransaction()['transactionID'];
+
         unset($products);
         unset($transactions);
 
         $_SESSION['orderSuccess'] = true;
+        $_SESSION['transactionID'] = $transactionID;
         header('location: '. __BASE_URL__ . 'products/'. $data['goodsId']);
     }
 
